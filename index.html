@@ -2317,38 +2317,70 @@ SMOXY × HIXY — NO LIMITS. JUST PLAY.
 </footer>
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
 
-let clicks = 0;
-let timer;
+    /* =========================
+       INTRO
+    ========================= */
 
-document
-.getElementById("secretLogo")
-.onclick = () => {
+    const intro = document.getElementById("intro");
 
-    clicks++;
+    // Pojistka – intro se po 6 sekundách určitě schová
+    setTimeout(() => {
+        if (intro) {
+            intro.classList.add("intro-finished");
+        }
+    }, 6000);
 
-    clearTimeout(timer);
 
-    timer = setTimeout(() => {
-        clicks = 0;
-    },2000);
+    /* =========================
+       SECRET EASTER EGG
+    ========================= */
 
-    if(clicks >= 5){
+    const logo = document.getElementById("secretLogo");
+    const egg = document.getElementById("secretEgg");
 
-        clicks = 0;
+    let clicks = 0;
+    let clickTimer = null;
+    let eggTimer = null;
 
-        const egg =
-        document.getElementById("secretEgg");
+    if (logo && egg) {
 
-        egg.style.display = "flex";
+        logo.addEventListener("click", () => {
 
-        setTimeout(() => {
-            egg.style.display = "none";
-        },5000);
+            clicks++;
+
+            clearTimeout(clickTimer);
+
+            clickTimer = setTimeout(() => {
+                clicks = 0;
+            }, 2000);
+
+            // 5 kliknutí = SECRET
+            if (clicks >= 5) {
+
+                clicks = 0;
+
+                clearTimeout(eggTimer);
+
+                egg.style.display = "flex";
+
+                // restart animace
+                egg.classList.remove("egg-show");
+                void egg.offsetWidth;
+                egg.classList.add("egg-show");
+
+                eggTimer = setTimeout(() => {
+                    egg.classList.remove("egg-show");
+
+                    setTimeout(() => {
+                        egg.style.display = "none";
+                    }, 500);
+
+                }, 5000);
+            }
+        });
     }
-};
 
+});
 </script>
-
-</body>
-</html>

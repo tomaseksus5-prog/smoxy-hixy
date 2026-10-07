@@ -1,0 +1,2977 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SMOXY × HIXY</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Orbitron',sans-serif;
+    background:#050507;
+    color:white;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        linear-gradient(rgba(140,0,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(140,0,255,.035) 1px,transparent 1px);
+    background-size:50px 50px;
+    pointer-events:none;
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:#7a00ff;
+    filter:blur(180px);
+    opacity:.12;
+    top:-200px;
+    left:50%;
+    transform:translateX(-50%);
+    pointer-events:none;
+    z-index:-3;
+}
+
+
+/* ============================= */
+/* CINEMATIC INTRO */
+/* ============================= */
+
+#intro{
+    position:fixed;
+    inset:0;
+    background:#030305;
+    z-index:100000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    animation:introOut 1s ease 5s forwards;
+}
+
+.intro-grid{
+    position:absolute;
+    inset:-100px;
+    background:
+        linear-gradient(rgba(140,0,255,.08) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(140,0,255,.08) 1px,transparent 1px);
+    background-size:45px 45px;
+    transform:perspective(500px) rotateX(60deg) scale(1.5);
+    animation:introGrid 2s linear infinite;
+}
+
+.intro-scan{
+    position:absolute;
+    left:0;
+    top:-10px;
+    width:100%;
+    height:3px;
+    background:#b45cff;
+    box-shadow:
+        0 0 15px #b45cff,
+        0 0 45px #8d00ff;
+    animation:introScan 2s linear infinite;
+}
+
+.intro-content{
+    position:relative;
+    z-index:5;
+    text-align:center;
+}
+
+.intro-system{
+    color:#914cff;
+    font-size:10px;
+    letter-spacing:5px;
+    margin-bottom:25px;
+    animation:introBlink .7s infinite;
+}
+
+.intro-loading{
+    width:260px;
+    max-width:70vw;
+    height:2px;
+    background:#17121b;
+    margin:0 auto 35px;
+    overflow:hidden;
+}
+
+.intro-loading span{
+    display:block;
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#6200ff,#d36cff);
+    box-shadow:0 0 15px #a000ff;
+    animation:introLoad 2.2s ease forwards;
+}
+
+.intro-title{
+    font-size:clamp(42px,9vw,110px);
+    font-weight:900;
+    letter-spacing:-4px;
+    color:white;
+    text-shadow:
+        4px 0 #7c00ff,
+        -4px 0 #ff00ff,
+        0 0 35px #8d00ff;
+    animation:introGlitch .15s infinite;
+}
+
+.intro-title b{
+    color:#b45cff;
+}
+
+.intro-sub{
+    margin-top:22px;
+    color:#a94cff;
+    font-size:11px;
+    letter-spacing:5px;
+    animation:introReveal 1s ease 2.5s both;
+}
+
+.intro-status{
+    margin-top:35px;
+    color:#555;
+    font-size:8px;
+    letter-spacing:3px;
+    animation:introReveal 1s ease 3.5s both;
+}
+
+@keyframes introLoad{
+    0%{width:0%;}
+    70%{width:75%;}
+    100%{width:100%;}
+}
+
+@keyframes introGrid{
+    from{
+        transform:perspective(500px) rotateX(60deg) scale(1.5) translateY(0);
+    }
+    to{
+        transform:perspective(500px) rotateX(60deg) scale(1.5) translateY(45px);
+    }
+}
+
+@keyframes introScan{
+    0%{top:-10px;}
+    100%{top:110%;}
+}
+
+@keyframes introBlink{
+    0%,100%{opacity:1;}
+    50%{opacity:.3;}
+}
+
+@keyframes introGlitch{
+    0%{transform:none;}
+    25%{transform:translateX(-3px) skewX(-2deg);}
+    50%{transform:translateX(3px);}
+    75%{transform:translateX(-2px) skewX(2deg);}
+    100%{transform:none;}
+}
+
+@keyframes introReveal{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+@keyframes introOut{
+    0%{
+        opacity:1;
+        visibility:visible;
+    }
+    75%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+    }
+}
+
+
+/* ============================= */
+/* NAV */
+/* ============================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:20px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(5,5,7,.82);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(160,0,255,.2);
+    z-index:100;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    color:#b45cff;
+    text-shadow:0 0 15px #8d00ff;
+    cursor:pointer;
+    user-select:none;
+    transition:.2s;
+}
+
+.logo:hover{
+    transform:scale(1.08);
+    text-shadow:
+        0 0 10px #8d00ff,
+        0 0 30px #8d00ff;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:28px;
+}
+
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    font-size:12px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#c56cff;
+    text-shadow:0 0 10px #9d00ff;
+}
+
+
+/* ============================= */
+/* HERO */
+/* ============================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:120px 20px 60px;
+}
+
+.hero-small{
+    color:#a94cff;
+    font-size:13px;
+    letter-spacing:5px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(45px,9vw,110px);
+    font-weight:900;
+    letter-spacing:-4px;
+    text-shadow:
+        4px 0 #8c00ff,
+        -4px 0 rgba(255,0,255,.35),
+        0 0 40px rgba(137,0,255,.7);
+    animation:glitch 3s infinite;
+}
+
+.hero p{
+    max-width:650px;
+    margin:25px auto;
+    color:#aaa;
+    line-height:1.8;
+    font-size:14px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:15px 30px;
+    border:1px solid #a000ff;
+    color:white;
+    text-decoration:none;
+    font-size:12px;
+    transition:.3s;
+    box-shadow:0 0 20px rgba(143,0,255,.15);
+}
+
+.btn:hover{
+    background:#8d00ff;
+    box-shadow:0 0 35px rgba(143,0,255,.6);
+    transform:translateY(-3px);
+}
+
+
+/* ============================= */
+/* SECTIONS */
+/* ============================= */
+
+section{
+    padding:100px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.section-title span{
+    color:#9f35ff;
+    font-size:11px;
+    letter-spacing:4px;
+}
+
+.section-title h2{
+    font-size:38px;
+    margin-top:10px;
+}
+
+
+/* ============================= */
+/* PROFILES */
+/* ============================= */
+
+.profile-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.profile{
+    padding:35px;
+    background:linear-gradient(145deg,#0c0c11,#08080b);
+    border:1px solid #29202f;
+    transition:.35s;
+}
+
+.profile:hover{
+    transform:translateY(-8px);
+    border-color:#9d00ff;
+    box-shadow:0 0 35px rgba(145,0,255,.22);
+}
+
+.avatar{
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:35px;
+    font-weight:900;
+    background:#11051a;
+    border:2px solid #9d00ff;
+    box-shadow:0 0 25px rgba(157,0,255,.5);
+    margin-bottom:25px;
+}
+
+.profile h3{
+    font-size:25px;
+}
+
+.role{
+    color:#9f35ff;
+    font-size:10px;
+    margin:8px 0 18px;
+    letter-spacing:2px;
+}
+
+.profile p{
+    color:#999;
+    line-height:1.7;
+    font-size:13px;
+}
+
+
+/* ============================= */
+/* STATS */
+/* ============================= */
+
+.stats-section{
+    background:linear-gradient(180deg,transparent,rgba(90,0,130,.05),transparent);
+}
+
+.stats-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.stat{
+    background:#09090d;
+    border:1px solid #27202d;
+    padding:28px 15px;
+    text-align:center;
+    transition:.3s;
+}
+
+.stat:hover{
+    border-color:#a000ff;
+    box-shadow:0 0 25px rgba(157,0,255,.25);
+    transform:translateY(-5px);
+}
+
+.stat-number{
+    font-size:28px;
+    font-weight:800;
+    color:#c56cff;
+    text-shadow:0 0 12px rgba(180,70,255,.5);
+}
+
+.stat-name{
+    color:#777;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:8px;
+}
+
+
+/* PR */
+
+.pr-box{
+    max-width:1000px;
+    margin:45px auto 0;
+    padding:30px;
+    border:1px solid #2b2035;
+    background:#08080b;
+}
+
+.pr-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.pr-top h3{
+    font-size:18px;
+}
+
+.pr-value{
+    color:#c56cff;
+    font-size:25px;
+    font-weight:800;
+}
+
+.progress{
+    width:100%;
+    height:12px;
+    background:#17121b;
+    overflow:hidden;
+    border-radius:20px;
+}
+
+.progress-bar{
+    height:100%;
+    width:76%;
+    background:linear-gradient(90deg,#6200ff,#d36cff);
+    box-shadow:0 0 20px #a000ff;
+    animation:load 2s ease;
+}
+
+.pr-info{
+    display:flex;
+    justify-content:space-between;
+    margin-top:12px;
+    color:#777;
+    font-size:10px;
+}
+
+.first-pr{
+    margin-top:25px;
+    color:#aaa;
+    font-size:12px;
+    line-height:1.8;
+}
+
+.first-pr strong{
+    color:white;
+}
+
+
+/* ============================= */
+/* FORTNITE TRACKER */
+/* ============================= */
+
+.tracker-section{
+    background:
+        linear-gradient(180deg,rgba(90,0,130,.04),transparent,rgba(90,0,130,.04));
+}
+
+.tracker-panel{
+    max-width:1050px;
+    margin:auto;
+    position:relative;
+    padding:2px;
+    background:linear-gradient(
+        120deg,
+        #5d00ff,
+        #180020,
+        #a000ff,
+        #180020,
+        #5d00ff
+    );
+    background-size:300% 300%;
+    animation:trackerBorder 7s ease infinite;
+    box-shadow:
+        0 0 25px rgba(140,0,255,.15),
+        0 0 70px rgba(140,0,255,.06);
+}
+
+.tracker-inner{
+    background:#07070a;
+    padding:35px;
+    position:relative;
+    overflow:hidden;
+}
+
+.tracker-inner::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(rgba(160,0,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(160,0,255,.025) 1px,transparent 1px);
+    background-size:35px 35px;
+    pointer-events:none;
+}
+
+.tracker-header{
+    position:relative;
+    z-index:2;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    padding-bottom:25px;
+    border-bottom:1px solid #21182a;
+}
+
+.tracker-brand{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.tracker-icon{
+    width:55px;
+    height:55px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border:1px solid #9d00ff;
+    background:#100817;
+    color:#c56cff;
+    font-size:22px;
+    font-weight:900;
+    box-shadow:0 0 20px rgba(157,0,255,.25);
+}
+
+.tracker-brand h3{
+    font-size:18px;
+}
+
+.tracker-brand p{
+    color:#777;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:6px;
+}
+
+.tracker-status{
+    padding:9px 13px;
+    border:1px solid #351544;
+    color:#b45cff;
+    font-size:9px;
+    letter-spacing:2px;
+    background:#0b070f;
+}
+
+.tracker-status::before{
+    content:"";
+    display:inline-block;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#a000ff;
+    box-shadow:0 0 10px #a000ff;
+    margin-right:8px;
+}
+
+.tracker-player{
+    position:relative;
+    z-index:2;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin:30px 0;
+    gap:20px;
+}
+
+.tracker-name{
+    font-size:32px;
+    font-weight:900;
+    text-shadow:
+        3px 0 #7c00ff,
+        -2px 0 rgba(255,0,255,.35);
+}
+
+.tracker-sub{
+    color:#777;
+    font-size:10px;
+    letter-spacing:2px;
+    margin-top:8px;
+}
+
+.tracker-tags{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+.tracker-tag{
+    padding:8px 12px;
+    border:1px solid #34203e;
+    color:#a78cad;
+    font-size:8px;
+    letter-spacing:1px;
+    background:#0b090e;
+}
+
+.tracker-stats{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.tracker-stat{
+    padding:25px;
+    background:#0a0a0e;
+    border:1px solid #241b2a;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.tracker-stat::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:2px;
+    background:linear-gradient(90deg,transparent,#8d00ff,transparent);
+    opacity:.5;
+}
+
+.tracker-stat:hover{
+    border-color:#8d00ff;
+    transform:translateY(-4px);
+    box-shadow:0 0 25px rgba(141,0,255,.18);
+}
+
+.tracker-stat-label{
+    color:#777;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+.tracker-stat-value{
+    margin-top:10px;
+    color:#d38cff;
+    font-size:34px;
+    font-weight:900;
+    text-shadow:0 0 15px rgba(180,70,255,.35);
+}
+
+.tracker-stat-small{
+    margin-top:7px;
+    color:#555;
+    font-size:8px;
+    letter-spacing:1px;
+}
+
+.tracker-footer{
+    position:relative;
+    z-index:2;
+    margin-top:25px;
+    padding-top:22px;
+    border-top:1px solid #21182a;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.tracker-note{
+    color:#555;
+    font-size:9px;
+    line-height:1.6;
+}
+
+.tracker-button{
+    display:inline-block;
+    padding:14px 22px;
+    border:1px solid #9d00ff;
+    color:white;
+    text-decoration:none;
+    font-size:9px;
+    letter-spacing:2px;
+    transition:.3s;
+    white-space:nowrap;
+    background:#0b0710;
+}
+
+.tracker-button:hover{
+    background:#8d00ff;
+    box-shadow:0 0 30px rgba(141,0,255,.5);
+    transform:translateY(-3px);
+}
+
+@keyframes trackerBorder{
+    0%,100%{
+        background-position:0% 50%;
+    }
+    50%{
+        background-position:100% 50%;
+    }
+}
+
+
+/* ============================= */
+/* ABOUT */
+/* ============================= */
+
+.about{
+    max-width:850px;
+    margin:auto;
+    text-align:center;
+}
+
+.about p{
+    color:#999;
+    line-height:2;
+    font-size:14px;
+}
+
+
+/* ============================= */
+/* DUO TIMELINE */
+/* ============================= */
+
+.timeline-section{
+    background:
+        linear-gradient(
+            180deg,
+            rgba(90,0,130,.03),
+            transparent,
+            rgba(90,0,130,.05)
+        );
+}
+
+.timeline-intro{
+    text-align:center;
+    max-width:700px;
+    margin:0 auto 55px;
+}
+
+.timeline-number{
+    font-size:clamp(60px,10vw,120px);
+    font-weight:900;
+    color:#c56cff;
+    line-height:.9;
+    text-shadow:
+        0 0 15px rgba(157,0,255,.5),
+        0 0 50px rgba(157,0,255,.25);
+    animation:timelinePulse 3s ease-in-out infinite;
+}
+
+.timeline-number small{
+    display:block;
+    margin-top:18px;
+    font-size:11px;
+    letter-spacing:5px;
+    color:#8d6c99;
+}
+
+.timeline-line{
+    max-width:850px;
+    margin:auto;
+    position:relative;
+}
+
+.timeline-line::before{
+    content:"";
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:50%;
+    width:2px;
+    background:linear-gradient(
+        180deg,
+        transparent,
+        #8d00ff 8%,
+        #b45cff 50%,
+        #8d00ff 92%,
+        transparent
+    );
+    box-shadow:0 0 18px rgba(141,0,255,.7);
+    transform:translateX(-50%);
+}
+
+.timeline-item{
+    width:50%;
+    padding:0 35px 45px;
+    position:relative;
+}
+
+.timeline-item:nth-child(odd){
+    left:0;
+    text-align:right;
+}
+
+.timeline-item:nth-child(even){
+    left:50%;
+    text-align:left;
+}
+
+.timeline-dot{
+    position:absolute;
+    top:5px;
+    width:14px;
+    height:14px;
+    background:#08080b;
+    border:2px solid #b45cff;
+    box-shadow:
+        0 0 10px #a000ff,
+        0 0 25px rgba(160,0,255,.7);
+    transform:rotate(45deg);
+}
+
+.timeline-item:nth-child(odd) .timeline-dot{
+    right:-7px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot{
+    left:-7px;
+}
+
+.timeline-card{
+    padding:25px;
+    background:linear-gradient(145deg,#0d0b11,#08080b);
+    border:1px solid #29202f;
+    transition:.35s;
+    position:relative;
+    overflow:hidden;
+}
+
+.timeline-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:2px;
+    background:linear-gradient(90deg,transparent,#a000ff,transparent);
+    opacity:.8;
+}
+
+.timeline-card:hover{
+    transform:translateY(-6px);
+    border-color:#a000ff;
+    box-shadow:0 0 30px rgba(140,0,255,.2);
+}
+
+.timeline-tag{
+    color:#a94cff;
+    font-size:9px;
+    letter-spacing:3px;
+    margin-bottom:10px;
+}
+
+.timeline-card h3{
+    font-size:19px;
+    margin-bottom:10px;
+}
+
+.timeline-card p{
+    color:#777;
+    font-size:11px;
+    line-height:1.8;
+}
+
+.timeline-ending{
+    max-width:850px;
+    margin:25px auto 0;
+    padding:30px;
+    text-align:center;
+    border:1px solid #34203e;
+    background:#09080c;
+}
+
+.timeline-ending h3{
+    font-size:22px;
+    color:#c56cff;
+    text-shadow:0 0 15px rgba(180,70,255,.4);
+}
+
+.timeline-ending p{
+    margin-top:10px;
+    color:#777;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+@keyframes timelinePulse{
+    0%,100%{
+        text-shadow:
+            0 0 15px rgba(157,0,255,.5),
+            0 0 50px rgba(157,0,255,.25);
+    }
+    50%{
+        text-shadow:
+            0 0 25px rgba(157,0,255,.8),
+            0 0 70px rgba(157,0,255,.4);
+    }
+}
+
+
+/* ============================= */
+/* MINDSET */
+/* ============================= */
+
+.mindset-section{
+    position:relative;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(130,0,255,.10),
+            transparent 55%
+        );
+}
+
+.mindset-main{
+    max-width:1050px;
+    margin:0 auto 45px;
+    padding:45px;
+    position:relative;
+    text-align:center;
+    background:linear-gradient(145deg,#100916,#07070a);
+    border:1px solid #6d00b8;
+    box-shadow:
+        0 0 35px rgba(140,0,255,.18),
+        inset 0 0 40px rgba(100,0,255,.04);
+    overflow:hidden;
+}
+
+.mindset-main::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 3px,
+        rgba(180,70,255,.035) 4px
+    );
+    pointer-events:none;
+}
+
+.mindset-main::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-20%;
+    width:140%;
+    height:2px;
+    background:linear-gradient(90deg,transparent,#b45cff,transparent);
+    box-shadow:0 0 20px #a000ff;
+    animation:mindsetScan 4s linear infinite;
+}
+
+.mindset-label{
+    position:relative;
+    z-index:2;
+    color:#a94cff;
+    font-size:10px;
+    letter-spacing:5px;
+    margin-bottom:22px;
+}
+
+.mindset-main h3{
+    position:relative;
+    z-index:2;
+    font-size:clamp(25px,4vw,48px);
+    line-height:1.2;
+    font-weight:900;
+    color:white;
+    text-shadow:
+        3px 0 #7c00ff,
+        -2px 0 rgba(255,0,255,.35),
+        0 0 30px rgba(157,0,255,.45);
+    animation:mindsetGlitch 5s infinite;
+}
+
+.mindset-main p{
+    position:relative;
+    z-index:2;
+    max-width:800px;
+    margin:25px auto 0;
+    color:#999;
+    line-height:1.9;
+    font-size:13px;
+}
+
+.mindset-main strong{
+    color:#c56cff;
+}
+
+.mindset-grid{
+    max-width:1050px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.mindset-card{
+    position:relative;
+    padding:28px 24px;
+    min-height:135px;
+    background:#09090d;
+    border:1px solid #29202f;
+    transition:.35s;
+    overflow:hidden;
+}
+
+.mindset-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:0;
+    height:2px;
+    background:#b45cff;
+    box-shadow:0 0 15px #a000ff;
+    transition:.35s;
+}
+
+.mindset-card:hover{
+    transform:translateY(-6px);
+    border-color:#9d00ff;
+    box-shadow:0 0 30px rgba(140,0,255,.2);
+}
+
+.mindset-card:hover::before{
+    width:100%;
+}
+
+.mindset-number{
+    color:#5e3b72;
+    font-size:9px;
+    letter-spacing:3px;
+    margin-bottom:18px;
+}
+
+.mindset-card h4{
+    font-size:16px;
+    color:#c56cff;
+    margin-bottom:10px;
+}
+
+.mindset-card p{
+    color:#777;
+    font-size:10px;
+    line-height:1.7;
+}
+
+.mindset-ending{
+    max-width:1050px;
+    margin:30px auto 0;
+    padding:20px;
+    text-align:center;
+    color:#5d4965;
+    font-size:9px;
+    letter-spacing:4px;
+}
+
+@keyframes mindsetScan{
+    0%{transform:translateY(-20px);}
+    50%{transform:translateY(180px);}
+    100%{transform:translateY(-20px);}
+}
+
+@keyframes mindsetGlitch{
+    0%,92%,100%{transform:none;}
+    94%{transform:translateX(3px);}
+    96%{transform:translateX(-3px);}
+}
+
+
+/* ================================================= */
+/* 10K FOLLOW GOAL */
+/* ================================================= */
+
+.goal-section{
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(150,0,255,.16),
+            transparent 55%
+        );
+}
+
+.goal-section::before{
+    content:"10K";
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    font-size:clamp(180px,30vw,420px);
+    font-weight:900;
+    color:rgba(140,0,255,.025);
+    pointer-events:none;
+    user-select:none;
+}
+
+.goal-panel{
+    max-width:1100px;
+    margin:auto;
+    position:relative;
+    padding:2px;
+    background:linear-gradient(
+        120deg,
+        #5d00ff,
+        #180020,
+        #c000ff,
+        #180020,
+        #5d00ff
+    );
+    background-size:300% 300%;
+    animation:goalBorder 6s ease infinite;
+    box-shadow:
+        0 0 35px rgba(140,0,255,.20),
+        0 0 100px rgba(140,0,255,.08);
+}
+
+.goal-inner{
+    position:relative;
+    overflow:hidden;
+    padding:55px 45px;
+    background:
+        linear-gradient(145deg,#100816,#060609);
+}
+
+.goal-inner::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(rgba(160,0,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(160,0,255,.035) 1px,transparent 1px);
+    background-size:35px 35px;
+    pointer-events:none;
+}
+
+.goal-inner::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:60%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(190,80,255,.08),
+        transparent
+    );
+    transform:skewX(-20deg);
+    animation:goalSweep 5s linear infinite;
+}
+
+.goal-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+}
+
+.goal-label{
+    color:#a94cff;
+    font-size:10px;
+    letter-spacing:5px;
+    margin-bottom:18px;
+}
+
+.goal-title{
+    font-size:clamp(35px,7vw,72px);
+    font-weight:900;
+    line-height:1;
+    color:white;
+    text-shadow:
+        4px 0 #7c00ff,
+        -3px 0 rgba(255,0,255,.35),
+        0 0 35px rgba(157,0,255,.65);
+    animation:goalGlitch 5s infinite;
+}
+
+.goal-number{
+    margin-top:25px;
+    font-size:clamp(70px,14vw,150px);
+    line-height:.85;
+    font-weight:900;
+    color:#c56cff;
+    text-shadow:
+        0 0 15px #a000ff,
+        0 0 40px rgba(160,0,255,.65),
+        0 0 90px rgba(160,0,255,.25);
+    animation:goalPulse 2.5s ease-in-out infinite;
+}
+
+.goal-followers{
+    margin-top:15px;
+    color:#fff;
+    font-size:12px;
+    letter-spacing:6px;
+}
+
+.goal-line{
+    width:100%;
+    max-width:650px;
+    height:3px;
+    margin:35px auto 0;
+    background:#17121b;
+    position:relative;
+    overflow:hidden;
+}
+
+.goal-line::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        #6200ff,
+        #d36cff,
+        #6200ff
+    );
+    box-shadow:0 0 20px #a000ff;
+    animation:goalLine 2s linear infinite;
+}
+
+.goal-status{
+    margin-top:14px;
+    color:#7e687f;
+    font-size:9px;
+    letter-spacing:3px;
+}
+
+.goal-copy{
+    max-width:760px;
+    margin:35px auto 0;
+    color:#999;
+    line-height:1.9;
+    font-size:13px;
+}
+
+.goal-copy strong{
+    color:#d38cff;
+}
+
+.goal-reason{
+    max-width:800px;
+    margin:25px auto 0;
+    padding:20px;
+    border:1px solid #302039;
+    background:rgba(10,7,13,.75);
+    color:#777;
+    font-size:10px;
+    line-height:1.8;
+    letter-spacing:.5px;
+}
+
+.goal-reason span{
+    color:#c56cff;
+    font-weight:800;
+}
+
+.goal-buttons{
+    margin-top:32px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.goal-button{
+    display:inline-block;
+    min-width:220px;
+    padding:17px 25px;
+    text-decoration:none;
+    color:white;
+    border:1px solid #a000ff;
+    background:#0b0710;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:2px;
+    transition:.3s;
+    box-shadow:0 0 20px rgba(140,0,255,.12);
+}
+
+.goal-button:hover{
+    background:#8d00ff;
+    transform:translateY(-4px);
+    box-shadow:
+        0 0 20px rgba(140,0,255,.55),
+        0 0 45px rgba(140,0,255,.25);
+}
+
+.goal-button.secondary{
+    border-color:#52236e;
+    color:#c9a9d5;
+}
+
+.goal-button.secondary:hover{
+    border-color:#a000ff;
+    color:white;
+}
+
+.goal-final{
+    margin-top:30px;
+    color:#5d4965;
+    font-size:9px;
+    letter-spacing:4px;
+}
+
+@keyframes goalBorder{
+    0%,100%{
+        background-position:0% 50%;
+    }
+    50%{
+        background-position:100% 50%;
+    }
+}
+
+@keyframes goalSweep{
+    0%{
+        left:-100%;
+    }
+    45%,100%{
+        left:150%;
+    }
+}
+
+@keyframes goalPulse{
+    0%,100%{
+        transform:scale(1);
+        text-shadow:
+            0 0 15px #a000ff,
+            0 0 40px rgba(160,0,255,.65),
+            0 0 90px rgba(160,0,255,.25);
+    }
+    50%{
+        transform:scale(1.025);
+        text-shadow:
+            0 0 25px #b45cff,
+            0 0 60px rgba(160,0,255,.8),
+            0 0 120px rgba(160,0,255,.35);
+    }
+}
+
+@keyframes goalLine{
+    0%{
+        transform:translateX(-100%);
+    }
+    100%{
+        transform:translateX(100%);
+    }
+}
+
+@keyframes goalGlitch{
+    0%,90%,100%{
+        transform:none;
+    }
+    92%{
+        transform:translateX(-4px);
+    }
+    94%{
+        transform:translateX(4px) skewX(-2deg);
+    }
+    96%{
+        transform:translateX(-2px);
+    }
+}
+
+
+/* ============================= */
+/* MOMENTS */
+/* ============================= */
+
+.moments-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.moment{
+    min-height:220px;
+    padding:30px;
+    border:1px solid #29202f;
+    background:#09090d;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    transition:.3s;
+}
+
+.moment:hover{
+    border-color:#a000ff;
+    transform:scale(1.02);
+    box-shadow:0 0 30px rgba(140,0,255,.18);
+}
+
+.moment-icon{
+    font-size:35px;
+    margin-bottom:auto;
+}
+
+.moment h3{
+    margin-bottom:8px;
+}
+
+.moment p{
+    color:#777;
+    font-size:11px;
+}
+
+
+/* ============================= */
+/* GALLERY */
+/* ============================= */
+
+.gallery{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.gallery-item{
+    height:210px;
+    background:linear-gradient(135deg,#14051d,#08080b);
+    border:1px solid #29202f;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#4d3d55;
+    font-size:11px;
+    transition:.3s;
+}
+
+.gallery-item:hover{
+    border-color:#a000ff;
+    color:#b45cff;
+    box-shadow:0 0 30px rgba(140,0,255,.2);
+}
+
+
+/* ============================= */
+/* CONTACT */
+/* ============================= */
+
+.socials{
+    max-width:900px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.social{
+    text-decoration:none;
+    color:white;
+    padding:28px;
+    background:#09090d;
+    border:1px solid #29202f;
+    transition:.3s;
+}
+
+.social:hover{
+    border-color:#a000ff;
+    transform:translateY(-5px);
+    box-shadow:0 0 25px rgba(140,0,255,.25);
+}
+
+.social-name{
+    color:#c56cff;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.social-user{
+    margin-top:10px;
+    font-size:16px;
+    word-break:break-word;
+}
+
+
+/* ============================= */
+/* DISCORD */
+/* ============================= */
+
+.discord-box{
+    max-width:900px;
+    margin:35px auto 0;
+    padding:35px;
+    text-align:center;
+    background:linear-gradient(145deg,#0d0713,#08080b);
+    border:1px solid #6f00ff;
+    box-shadow:0 0 35px rgba(111,0,255,.18);
+    transition:.3s;
+}
+
+.discord-box:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 45px rgba(111,0,255,.35);
+}
+
+.discord-icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.discord-box h3{
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.discord-box p{
+    color:#888;
+    font-size:12px;
+    margin-bottom:25px;
+}
+
+.discord-button{
+    display:inline-block;
+    padding:15px 35px;
+    background:#7c3cff;
+    color:white;
+    text-decoration:none;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+    transition:.3s;
+    box-shadow:0 0 20px rgba(124,60,255,.35);
+}
+
+.discord-button:hover{
+    background:#9b63ff;
+    box-shadow:0 0 35px rgba(124,60,255,.65);
+    transform:scale(1.04);
+}
+
+
+/* ============================= */
+/* FOOTER */
+/* ============================= */
+
+footer{
+    padding:50px 20px;
+    text-align:center;
+    border-top:1px solid #211a27;
+    color:#555;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+
+/* ============================= */
+/* SECRET EASTER EGG */
+/* ============================= */
+
+#secretEgg{
+    position:fixed;
+    inset:0;
+    background:#030005;
+    z-index:99999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+#secretEgg.active{
+    display:flex;
+    animation:eggFade .25s ease;
+}
+
+.egg-content{
+    text-align:center;
+    color:white;
+    position:relative;
+    z-index:5;
+    padding:20px;
+}
+
+.egg-small{
+    color:#a94cff;
+    font-size:12px;
+    letter-spacing:6px;
+    margin-bottom:25px;
+    animation:eggBlink .4s infinite;
+}
+
+.egg-content h1{
+    font-size:clamp(35px,7vw,90px);
+    margin:0;
+    font-weight:900;
+    text-shadow:
+        4px 0 #8c00ff,
+        -4px 0 #ff00ff,
+        0 0 30px #8d00ff,
+        0 0 70px #8d00ff;
+    animation:eggGlitch .12s infinite;
+}
+
+.egg-line{
+    width:350px;
+    max-width:80vw;
+    height:2px;
+    background:#a000ff;
+    box-shadow:0 0 20px #a000ff;
+    margin:30px auto;
+}
+
+.egg-content p{
+    color:#c56cff;
+    letter-spacing:6px;
+    font-weight:800;
+    font-size:15px;
+}
+
+.egg-content span{
+    display:block;
+    margin-top:18px;
+    color:#777;
+    font-size:10px;
+    letter-spacing:4px;
+}
+
+.egg-noise{
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 3px,
+        rgba(180,70,255,.09) 4px
+    );
+    z-index:2;
+    pointer-events:none;
+}
+
+.egg-grid{
+    position:absolute;
+    inset:-100px;
+    background:
+        linear-gradient(rgba(140,0,255,.08) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(140,0,255,.08) 1px,transparent 1px);
+    background-size:40px 40px;
+    transform:perspective(400px) rotateX(55deg);
+    animation:eggGridMove 2s linear infinite;
+}
+
+.egg-scan{
+    position:absolute;
+    left:0;
+    width:100%;
+    height:5px;
+    background:#b45cff;
+    box-shadow:
+        0 0 15px #b45cff,
+        0 0 40px #8d00ff;
+    opacity:.8;
+    animation:eggScan 1.5s linear infinite;
+}
+
+@keyframes eggFade{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+@keyframes eggGlitch{
+    0%{transform:translate(0);}
+    25%{transform:translate(-5px,2px) skewX(-2deg);}
+    50%{transform:translate(5px,-2px);}
+    75%{transform:translate(-3px,-1px) skewX(2deg);}
+    100%{transform:translate(0);}
+}
+
+@keyframes eggBlink{
+    0%,100%{opacity:1;}
+    50%{opacity:.35;}
+}
+
+@keyframes eggGridMove{
+    from{
+        transform:perspective(400px) rotateX(55deg) translateY(0);
+    }
+    to{
+        transform:perspective(400px) rotateX(55deg) translateY(40px);
+    }
+}
+
+@keyframes eggScan{
+    0%{top:-10px;}
+    100%{top:110%;}
+}
+
+
+/* ============================= */
+/* ANIMATIONS */
+/* ============================= */
+
+@keyframes glitch{
+    0%,90%,100%{
+        transform:none;
+    }
+    92%{
+        transform:skewX(-3deg);
+    }
+    94%{
+        transform:translateX(4px);
+    }
+    96%{
+        transform:translateX(-4px);
+    }
+}
+
+@keyframes load{
+    from{
+        width:0;
+    }
+}
+
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media(max-width:800px){
+
+    nav{
+        padding:18px 5%;
+    }
+
+    nav ul{
+        gap:12px;
+        flex-wrap:wrap;
+        justify-content:flex-end;
+    }
+
+    nav a{
+        font-size:8px;
+    }
+
+    .profile-grid,
+    .moments-grid,
+    .gallery,
+    .socials,
+    .mindset-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .tracker-header,
+    .tracker-player,
+    .tracker-footer{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .tracker-tags{
+        justify-content:flex-start;
+    }
+
+    .tracker-name{
+        font-size:25px;
+    }
+
+    .tracker-stats{
+        grid-template-columns:1fr;
+    }
+
+    .tracker-button{
+        width:100%;
+        text-align:center;
+    }
+
+    .tracker-inner{
+        padding:25px 18px;
+    }
+
+    .timeline-line::before{
+        left:10px;
+        transform:none;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even){
+        width:100%;
+        left:0;
+        text-align:left;
+        padding-left:40px;
+        padding-right:0;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot{
+        left:3px;
+        right:auto;
+    }
+
+    .timeline-card{
+        padding:22px;
+    }
+
+    .timeline-number{
+        font-size:75px;
+    }
+
+    .mindset-main{
+        padding:32px 22px;
+    }
+
+    .mindset-main h3{
+        font-size:25px;
+    }
+
+    .mindset-main p{
+        font-size:11px;
+    }
+
+    .goal-inner{
+        padding:45px 20px;
+    }
+
+    .goal-title{
+        font-size:36px;
+    }
+
+    .goal-number{
+        font-size:90px;
+    }
+
+    .goal-followers{
+        font-size:9px;
+        letter-spacing:4px;
+    }
+
+    .goal-copy{
+        font-size:11px;
+    }
+
+    .goal-button{
+        width:100%;
+        min-width:0;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    section{
+        padding:80px 5%;
+    }
+
+    .intro-title{
+        font-size:clamp(38px,10vw,70px);
+        letter-spacing:-2px;
+    }
+
+    .intro-sub{
+        font-size:8px;
+        letter-spacing:3px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ============================= -->
+<!-- CINEMATIC INTRO -->
+<!-- ============================= -->
+
+<div id="intro">
+
+    <div class="intro-grid"></div>
+    <div class="intro-scan"></div>
+
+    <div class="intro-content">
+
+        <div class="intro-system">
+            SYSTEM // INITIALIZING
+        </div>
+
+        <div class="intro-loading">
+            <span></span>
+        </div>
+
+        <div class="intro-title">
+            SMOXY <b>×</b> HIXY
+        </div>
+
+        <div class="intro-sub">
+            11 YEARS // ONE CONNECTION
+        </div>
+
+        <div class="intro-status">
+            CONNECTION ESTABLISHED
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- NAV -->
+<!-- ============================= -->
+
+<nav>
+
+<div class="logo" id="secretLogo">S × H</div>
+
+<ul>
+<li><a href="#profiles">PROFILES</a></li>
+<li><a href="#stats">STATS</a></li>
+<li><a href="#tracker">TRACKER</a></li>
+<li><a href="#about">ABOUT</a></li>
+<li><a href="#timeline">TIMELINE</a></li>
+<li><a href="#mindset">MINDSET</a></li>
+<li><a href="#goal">10K GOAL</a></li>
+<li><a href="#moments">MOMENTS</a></li>
+<li><a href="#socials">CONTACT</a></li>
+</ul>
+
+</nav>
+
+
+<!-- ============================= -->
+<!-- HERO -->
+<!-- ============================= -->
+
+<header class="hero">
+
+<div>
+
+<div class="hero-small">DUO PROJECT // 2026</div>
+
+<h1>SMOXY × HIXY</h1>
+
+<p>
+Dva lidi. Jeden vibe. Vlastní identita.
+<br>
+Vítej na oficiální stránce SMOXY × HIXY.
+</p>
+
+<a class="btn" href="#profiles">ENTER THE DUO ↓</a>
+
+</div>
+
+</header>
+
+
+<!-- ============================= -->
+<!-- PROFILES -->
+<!-- ============================= -->
+
+<section id="profiles">
+
+<div class="section-title">
+
+<span>01 // PROFILES</span>
+
+<h2>WHO WE ARE</h2>
+
+</div>
+
+<div class="profile-grid">
+
+<div class="profile">
+
+<div class="avatar">S</div>
+
+<h3>SMOXY</h3>
+
+<div class="role">VXR // COMPETITIVE GAMING</div>
+
+<p>
+Fortnite player, competitive gaming, turnaje,
+clutch momenty a neustálý progress.
+Zero Build, aim, rotace a hlavně žádný
+vzdávání se.
+</p>
+
+</div>
+
+
+<div class="profile">
+
+<div class="avatar">H</div>
+
+<h3>HIXY</h3>
+
+<div class="role">DUO // HOMIE</div>
+
+<p>
+Druhá polovina dua. Vlastní tag,
+vlastní vibe a člověk, který patří
+do projektu SMOXY × HIXY.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- FORTNITE STATS -->
+<!-- ============================= -->
+
+<section id="stats" class="stats-section">
+
+<div class="section-title">
+
+<span>02 // SMOXY</span>
+
+<h2>FORTNITE STATS</h2>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat">
+<div class="stat-number">428</div>
+<div class="stat-name">WINS</div>
+</div>
+
+<div class="stat">
+<div class="stat-number">6.20%</div>
+<div class="stat-name">WIN RATE</div>
+</div>
+
+<div class="stat">
+<div class="stat-number">16,348</div>
+<div class="stat-name">KILLS</div>
+</div>
+
+<div class="stat">
+<div class="stat-number">2.52</div>
+<div class="stat-name">K/D</div>
+</div>
+
+<div class="stat">
+<div class="stat-number">19</div>
+<div class="stat-name">CURRENT PR</div>
+</div>
+
+<div class="stat">
+<div class="stat-number">60</div>
+<div class="stat-name">FPS</div>
+</div>
+
+<div class="stat">
+<div class="stat-number">UNREAL</div>
+<div class="stat-name">BEST RANK</div>
+</div>
+
+<div class="stat">
+<div class="stat-number">ZB</div>
+<div class="stat-name">MAIN MODE</div>
+</div>
+
+</div>
+
+
+<div class="pr-box">
+
+<div class="pr-top">
+
+<h3>PR PROGRESS</h3>
+
+<div class="pr-value">19 PR</div>
+
+</div>
+
+<div class="progress">
+
+<div class="progress-bar"></div>
+
+</div>
+
+<div class="pr-info">
+
+<span>FIRST PR: 4.9</span>
+
+<span>CURRENT: 19</span>
+
+</div>
+
+<div class="first-pr">
+
+<strong>FIRST PR</strong><br>
+
+1. 8. 2026 — Console Duos ZB Cash Cup<br>
+
+Placement: <strong>#5,096</strong> · PR: <strong>4.9</strong>
+
+<br><br>
+
+Od prvního PR až na současných <strong>19 PR</strong>.
+Tohle je teprve začátek.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- FORTNITE TRACKER -->
+<!-- ============================= -->
+
+<section id="tracker" class="tracker-section">
+
+<div class="section-title">
+
+<span>03 // VERIFIED PROFILE</span>
+
+<h2>FORTNITE TRACKER</h2>
+
+</div>
+
+
+<div class="tracker-panel">
+
+<div class="tracker-inner">
+
+<div class="tracker-header">
+
+<div class="tracker-brand">
+
+<div class="tracker-icon">FT</div>
+
+<div>
+
+<h3>FORTNITE TRACKER</h3>
+
+<p>PLAYER PERFORMANCE // PROFILE OVERVIEW</p>
+
+</div>
+
+</div>
+
+<div class="tracker-status">
+PROFILE FOUND
+</div>
+
+</div>
+
+
+<div class="tracker-player">
+
+<div>
+
+<div class="tracker-name">VXR Smoxyツ</div>
+
+<div class="tracker-sub">
+EPIC PROFILE // VXR SMOXY
+</div>
+
+</div>
+
+<div class="tracker-tags">
+
+<div class="tracker-tag">EU</div>
+<div class="tracker-tag">CONSOLE</div>
+<div class="tracker-tag">ZERO BUILD</div>
+
+</div>
+
+</div>
+
+
+<div class="tracker-stats">
+
+<div class="tracker-stat">
+
+<div class="tracker-stat-label">
+LIFETIME PR
+</div>
+
+<div class="tracker-stat-value">
+27
+</div>
+
+<div class="tracker-stat-small">
+ALL-TIME POWER RANKING
+</div>
+
+</div>
+
+
+<div class="tracker-stat">
+
+<div class="tracker-stat-label">
+2026 PR
+</div>
+
+<div class="tracker-stat-value">
+19
+</div>
+
+<div class="tracker-stat-small">
+CURRENT SEASON / YEAR
+</div>
+
+</div>
+
+</div>
+
+
+<div class="tracker-footer">
+
+<div class="tracker-note">
+TRACKER PROFILE<br>
+VXR Smoxyツ
+</div>
+
+<a
+class="tracker-button"
+href="https://fortnitetracker.com/fortnite/profile/epic/VXR%20Smoxy%E3%83%84/epic-events/overview"
+target="_blank">
+VIEW FULL TRACKER →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- ABOUT -->
+<!-- ============================= -->
+
+<section id="about">
+
+<div class="section-title">
+
+<span>04 // IDENTITY</span>
+
+<h2>ABOUT US</h2>
+
+</div>
+
+<div class="about">
+
+<p>
+SMOXY × HIXY není jen název.
+Je to naše vlastní identita, naše momenty
+a věci, které jsme spolu zažili.
+<br><br>
+Žádný kopírování. Žádný fake vibe.
+Prostě SMOXY × HIXY.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- DUO TIMELINE -->
+<!-- ============================= -->
+
+<section id="timeline" class="timeline-section">
+
+<div class="section-title">
+
+<span>05 // HISTORY</span>
+
+<h2>DUO TIMELINE</h2>
+
+</div>
+
+<div class="timeline-intro">
+
+<div class="timeline-number">
+11+
+<small>YEARS OF KNOWING EACH OTHER</small>
+</div>
+
+</div>
+
+
+<div class="timeline-line">
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-card">
+
+<div class="timeline-tag">
+THEN
+</div>
+
+<h3>WE MET</h3>
+
+<p>
+Začalo naše přátelství. Od té chvíle
+se píše společná historie SMOXY × HIXY.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-card">
+
+<div class="timeline-tag">
+YEARS
+</div>
+
+<h3>11 YEARS OF MEMORIES</h3>
+
+<p>
+Roky společných momentů, srandy,
+zážitků a věcí, které nejdou jen tak
+zapomenout.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-card">
+
+<div class="timeline-tag">
+NOW
+</div>
+
+<h3>SMOXY × HIXY</h3>
+
+<p>
+Dnes už nejde jen o jedno jméno.
+Je to naše vlastní duo, vlastní vibe
+a vlastní identita.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-card">
+
+<div class="timeline-tag">
+NEXT
+</div>
+
+<h3>STILL GOING</h3>
+
+<p>
+11 let za námi.
+A ještě zdaleka nekončíme.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="timeline-ending">
+
+<h3>11 YEARS. ONE CONNECTION.</h3>
+
+<p>SMOXY × HIXY // NO LIMITS. JUST PLAY.</p>
+
+</div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- MINDSET -->
+<!-- ============================= -->
+
+<section id="mindset" class="mindset-section">
+
+<div class="section-title">
+
+<span>06 // MINDSET</span>
+
+<h2>KEEP YOUR HEAD UP</h2>
+
+</div>
+
+
+<div class="mindset-main">
+
+<div class="mindset-label">
+MINDSET // PERSONAL RULE
+</div>
+
+<h3>
+„BUĎ SÁM ZA SEBE.<br>
+NE PRO OSTATNÍ.“
+</h3>
+
+<p>
+<strong>Nikdy se nenech zmanipulovat.</strong>
+Čím víc se ti budou lidi smát a čím víc na to budeš reagovat,
+tím víc to budou dělat.
+<br><br>
+Nevšímej si jich. Nedávej jim reakci.
+<strong>Buď sám sebou.</strong>
+Nemusíš nikomu dokazovat, kdo jsi.
+</p>
+
+</div>
+
+
+<div class="mindset-grid">
+
+<div class="mindset-card">
+
+<div class="mindset-number">01 // IGNORE</div>
+
+<h4>NEDÁVEJ JIM REAKCI.</h4>
+
+<p>
+Někteří lidi čekají jen na to,
+až tě rozhodí. Nenech jim tu možnost.
+</p>
+
+</div>
+
+
+<div class="mindset-card">
+
+<div class="mindset-number">02 // CONTROL</div>
+
+<h4>OVLÁDEJ SVOJI HLAVU.</h4>
+
+<p>
+Nemůžeš kontrolovat, co říkají ostatní.
+Můžeš ale kontrolovat, jak na to reaguješ.
+</p>
+
+</div>
+
+
+<div class="mindset-card">
+
+<div class="mindset-number">03 // IDENTITY</div>
+
+<h4>BUĎ SÁM SEBOU.</h4>
+
+<p>
+Neměň se jen proto, aby tě někdo
+jiný přijal. Vlastní vibe je vlastní síla.
+</p>
+
+</div>
+
+
+<div class="mindset-card">
+
+<div class="mindset-number">04 // FOCUS</div>
+
+<h4>SOUSTŘEĎ SE NA SEBE.</h4>
+
+<p>
+Méně řeš lidi kolem sebe.
+Více řeš svůj vlastní progress.
+</p>
+
+</div>
+
+
+<div class="mindset-card">
+
+<div class="mindset-number">05 // NO PROOF</div>
+
+<h4>NEMUSÍŠ NIC DOKAZOVAT.</h4>
+
+<p>
+Tvoje výsledky a tvoje cesta
+nemusí dávat smysl všem ostatním.
+</p>
+
+</div>
+
+
+<div class="mindset-card">
+
+<div class="mindset-number">06 // MOVE</div>
+
+<h4>JDI DÁL.</h4>
+
+<p>
+Nenech jednu věc, jednoho člověka
+nebo jeden názor zastavit tvoji cestu.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="mindset-ending">
+STAY REAL // STAY YOURSELF // KEEP MOVING
+</div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- 10K FOLLOW GOAL -->
+<!-- ================================================= -->
+
+<section id="goal" class="goal-section">
+
+<div class="section-title">
+
+<span>07 // THE NEXT GOAL</span>
+
+<h2>HELP US HIT 10K</h2>
+
+</div>
+
+
+<div class="goal-panel">
+
+<div class="goal-inner">
+
+<div class="goal-content">
+
+<div class="goal-label">
+SMOXY × HIXY // COMMUNITY GOAL
+</div>
+
+<div class="goal-title">
+THE NEXT LEVEL
+</div>
+
+<div class="goal-number">
+10K
+</div>
+
+<div class="goal-followers">
+FOLLOWERS ON INSTAGRAM
+</div>
+
+<div class="goal-line"></div>
+
+<div class="goal-status">
+GOAL STATUS // IN PROGRESS
+</div>
+
+<div class="goal-copy">
+
+Náš další cíl je jednoduchý.
+
+<strong>10 000 lidí, kteří budou součástí tohohle projektu.</strong>
+
+<br><br>
+
+Pokud se ti líbí náš vibe, naše momenty,
+gaming, humor nebo prostě samotné
+<strong>SMOXY × HIXY</strong>, přidej se k nám.
+
+</div>
+
+
+<div class="goal-reason">
+
+<span>JEDEN FOLLOW = JEDEN KROK BLÍŽ.</span>
+<br><br>
+Možná to pro tebe zabere jen pár sekund,
+ale pro nás je každý nový člověk další důvod
+pokračovat a posouvat tenhle projekt dál.
+<br><br>
+Až jednou dosáhneme 10K,
+chceme se podívat zpátky a vědět,
+že jste u toho byli s námi od začátku.
+
+</div>
+
+
+<div class="goal-buttons">
+
+<a
+class="goal-button"
+href="https://www.instagram.com/susage.eo/"
+target="_blank">
+FOLLOW SMOXY →
+</a>
+
+<a
+class="goal-button secondary"
+href="https://www.instagram.com/honz1k_offc.16/"
+target="_blank">
+FOLLOW HIXY →
+</a>
+
+</div>
+
+
+<div class="goal-final">
+10,000 IS THE TARGET // LET'S GET THERE
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- MOMENTS -->
+<!-- ============================= -->
+
+<section id="moments">
+
+<div class="section-title">
+
+<span>08 // MOMENTS</span>
+
+<h2>OUR WORLD</h2>
+
+</div>
+
+<div class="moments-grid">
+
+<div class="moment">
+
+<div class="moment-icon">🎮</div>
+
+<h3>Gaming</h3>
+
+<p>Hry, turnaje, grind a společný momenty.</p>
+
+</div>
+
+<div class="moment">
+
+<div class="moment-icon">⚡</div>
+
+<h3>Highlights</h3>
+
+<p>Nejlepší momenty, clutch situace a progress.</p>
+
+</div>
+
+<div class="moment">
+
+<div class="moment-icon">📸</div>
+
+<h3>Gallery</h3>
+
+<p>Místo pro naše fotky a společné vzpomínky.</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- GALLERY -->
+<!-- ============================= -->
+
+<section>
+
+<div class="section-title">
+
+<span>09 // GALLERY</span>
+
+<h2>COMING SOON</h2>
+
+</div>
+
+<div class="gallery">
+
+<div class="gallery-item">PHOTO // 01</div>
+<div class="gallery-item">PHOTO // 02</div>
+<div class="gallery-item">PHOTO // 03</div>
+<div class="gallery-item">PHOTO // 04</div>
+<div class="gallery-item">PHOTO // 05</div>
+<div class="gallery-item">PHOTO // 06</div>
+
+</div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- CONTACT -->
+<!-- ============================= -->
+
+<section id="socials">
+
+<div class="section-title">
+
+<span>10 // CONTACT</span>
+
+<h2>FIND US</h2>
+
+</div>
+
+
+<div class="socials">
+
+<a class="social"
+href="https://www.instagram.com/susage.eo/"
+target="_blank">
+
+<div class="social-name">
+SMOXY // INSTAGRAM
+</div>
+
+<div class="social-user">
+@susage.eo
+</div>
+
+</a>
+
+
+<a class="social"
+href="https://www.instagram.com/honz1k_offc.16/"
+target="_blank">
+
+<div class="social-name">
+HIXY // INSTAGRAM
+</div>
+
+<div class="social-user">
+@honz1k_offc.16
+</div>
+
+</a>
+
+
+<a class="social"
+href="mailto:tomaseksus5@gmail.com">
+
+<div class="social-name">
+SMOXY // EMAIL
+</div>
+
+<div class="social-user">
+tomaseksus5@gmail.com
+</div>
+
+</a>
+
+
+<a class="social"
+href="mailto:stastnjan@gmail.com">
+
+<div class="social-name">
+HIXY // EMAIL
+</div>
+
+<div class="social-user">
+stastnjan@gmail.com
+</div>
+
+</a>
+
+</div>
+
+
+<!-- DISCORD -->
+
+<div class="discord-box">
+
+<div class="discord-icon">💬</div>
+
+<h3>SMOXY'S DISCORD</h3>
+
+<p>
+Gaming • Community • Friends • Vibe
+</p>
+
+<a
+class="discord-button"
+href="https://discord.gg/9pXXYwpWm"
+target="_blank">
+JOIN SERVER →
+</a>
+
+</div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- SECRET EGG -->
+<!-- ============================= -->
+
+<div id="secretEgg">
+
+<div class="egg-grid"></div>
+
+<div class="egg-noise"></div>
+
+<div class="egg-scan"></div>
+
+<div class="egg-content">
+
+<div class="egg-small">
+SYSTEM // OVERRIDE
+</div>
+
+<h1>YOU FOUND THE SECRET.</h1>
+
+<div class="egg-line"></div>
+
+<p>SMOXY × HIXY // 2026</p>
+
+<span>NO LIMITS. JUST PLAY.</span>
+
+</div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- FOOTER -->
+<!-- ============================= -->
+
+<footer>
+
+SMOXY × HIXY — NO LIMITS. JUST PLAY.
+
+</footer>
+
+
+<script>
+
+/* SECRET EASTER EGG */
+
+let secretClicks = 0;
+let secretTimer;
+
+const secretLogo = document.getElementById("secretLogo");
+const secretEgg = document.getElementById("secretEgg");
+
+secretLogo.addEventListener("click", function(){
+
+    secretClicks++;
+
+    clearTimeout(secretTimer);
+
+    secretTimer = setTimeout(function(){
+        secretClicks = 0;
+    }, 2000);
+
+    if(secretClicks >= 5){
+
+        secretClicks = 0;
+
+        secretEgg.classList.add("active");
+
+        setTimeout(function(){
+            secretEgg.classList.remove("active");
+        }, 5000);
+
+    }
+
+});
+
+</script>
+
+
+</body>
+</html>

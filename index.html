@@ -1,454 +1,73 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08050d">
-<meta name="description" content="VXR SMOXY — Fortnite competitive player. Stats, PR, tournaments and VXR ZEROX.">
-<title>VXR SMOXY // OFFICIAL PLAYER</title>
+<meta name="theme-color" content="#080510">
+<title>VXR SMOXY — Fortnite Competitive</title>
+<meta name="description" content="VXR SMOXY — Fortnite competitive, stats, VXR Clan a připravovaný VXR Solo Cash Cup.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#07060a;
-  --panel:#100c16;
-  --purple:#a855f7;
-  --bright:#d8a2ff;
-  --muted:#94889e;
-  --border:rgba(168,85,247,.24);
-}
-*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
-body{background:var(--bg);color:#fff;font-family:'Rajdhani',sans-serif;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(rgba(168,85,247,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(168,85,247,.035) 1px,transparent 1px);background-size:45px 45px}
-a{color:inherit}
-button,a{-webkit-tap-highlight-color:transparent}
-button{font:inherit}
-.wrap{width:min(1120px,90%);margin:auto}
-section{padding:100px 0;scroll-margin-top:80px}
-.kicker{font-family:Orbitron,sans-serif;color:var(--purple);font-size:10px;letter-spacing:4px;text-transform:uppercase}
-.heading{font:800 clamp(28px,5vw,43px) Orbitron,sans-serif;margin-top:13px}
-.section-head{text-align:center;margin-bottom:45px}
-.section-head p{color:var(--muted);margin-top:12px;font-size:17px}
-.purple{color:var(--bright)}
-/* NAVIGATION */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:17px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(7,6,10,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-.brand{font:900 19px Orbitron,sans-serif;color:var(--bright);text-decoration:none;text-shadow:0 0 18px #8b28db;white-space:nowrap}
-.nav-links{display:flex;align-items:center;gap:20px;list-style:none}
-.nav-links a{text-decoration:none;color:#b9aebe;font:600 10px Orbitron,sans-serif;transition:.2s}
-.nav-links a:hover{color:#fff;text-shadow:0 0 12px var(--purple)}
-.menu-btn{display:none;background:none;color:white;border:1px solid var(--border);padding:8px 11px;cursor:pointer}
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:130px 0 80px}
-.hero:before{content:"";position:absolute;width:550px;height:550px;border-radius:50%;right:-130px;top:15%;background:rgba(125,35,205,.15);filter:blur(90px);pointer-events:none}
-.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,var(--purple),transparent)}
-.hero-content{position:relative;z-index:1;max-width:900px}
-.status{display:inline-flex;align-items:center;gap:9px;padding:9px 13px;border:1px solid var(--border);background:rgba(168,85,247,.06);font:10px Orbitron,sans-serif;letter-spacing:2px;color:#d8c1e8}
-.status-dot{width:7px;height:7px;background:#b65cff;border-radius:50%;box-shadow:0 0 12px #b65cff}
-.hero h1{font:900 clamp(43px,9.3vw,105px)/1.08 Orbitron,sans-serif;letter-spacing:-4px;margin:28px 0 18px;text-shadow:3px 0 #7800bd,-2px 0 #421061}
-.hero h1 span{display:block;color:var(--bright);text-shadow:0 0 32px rgba(168,85,247,.55)}
-.hero-copy{max-width:620px;color:#b5aaba;font-size:20px;line-height:1.65}
-.hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:32px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 22px;text-decoration:none;font:700 11px Orbitron,sans-serif;letter-spacing:1px;border:1px solid var(--purple);transition:.25s;cursor:pointer}
-.btn-primary{background:var(--purple);color:#fff}
-.btn-outline{background:transparent;color:#e7d5f4}
-.btn:hover{transform:translateY(-3px);box-shadow:0 0 25px rgba(168,85,247,.3)}
-.hero-meta{display:flex;gap:28px;flex-wrap:wrap;margin-top:50px;color:#84758d;font:10px Orbitron,sans-serif;letter-spacing:2px}
-.hero-meta strong{color:#d8a2ff}
-.hero-stamp{position:absolute;right:2%;bottom:15%;font:900 clamp(70px,15vw,180px) Orbitron,sans-serif;color:rgba(168,85,247,.045);pointer-events:none;user-select:none}
-/* STATS */
-.stats-section{background:linear-gradient(180deg,transparent,rgba(65,22,88,.09),transparent)}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
-.stat{position:relative;padding:27px 19px;background:linear-gradient(140deg,#130e1a,#0a080e);border:1px solid var(--border);overflow:hidden;transition:.25s}
-.stat:before{content:"";position:absolute;top:0;left:0;width:35px;height:2px;background:var(--purple)}
-.stat:hover{border-color:var(--purple);transform:translateY(-4px)}
-.stat-value{font:800 clamp(22px,3vw,33px) Orbitron,sans-serif;color:var(--bright);overflow-wrap:anywhere}
-.stat-label{margin-top:10px;color:#93839d;font:10px Orbitron,sans-serif;letter-spacing:2px}
-.stat-note{margin-top:6px;color:#65576d;font-size:13px}
-.pr-panel{margin-top:20px;padding:30px;background:var(--panel);border:1px solid var(--border)}
-.pr-top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
-.pr-top h3{font:700 15px Orbitron,sans-serif}
-.pr-number{font:800 24px Orbitron,sans-serif;color:var(--bright)}
-.pr-track{height:9px;background:#24172e;margin-top:20px;overflow:hidden;border-radius:20px}
-.pr-fill{height:100%;width:0;background:linear-gradient(90deg,#7114b9,#d8a2ff);box-shadow:0 0 18px #a855f7;transition:width 1.5s ease}
-.pr-labels{display:flex;justify-content:space-between;gap:12px;margin-top:10px;color:#887691;font-size:13px}
-.pr-details{margin-top:25px;padding-top:20px;border-top:1px solid var(--border);color:#a99bb0;font-size:16px;line-height:1.8}
-.pr-details strong{color:#e2c5fa}
-/* PLAYER CARD */
-.player-card{display:grid;grid-template-columns:1.1fr .9fr;border:1px solid var(--border);background:linear-gradient(125deg,#140c1d,#09080c);overflow:hidden}
-.player-main{padding:42px}
-.player-label{color:var(--purple);font:10px Orbitron,sans-serif;letter-spacing:3px}
-.player-name{font:900 clamp(31px,5vw,54px) Orbitron,sans-serif;margin:15px 0}
-.player-desc{color:#a99caf;font-size:18px;line-height:1.7;max-width:540px}
-.player-tags{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
-.tag{padding:8px 11px;border:1px solid var(--border);color:#d2b5e7;font:10px Orbitron,sans-serif}
-.player-side{padding:38px;background:radial-gradient(ellipse at center,rgba(130,35,200,.18),transparent 72%);border-left:1px solid var(--border);display:flex;flex-direction:column;justify-content:center}
-.side-row{display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid rgba(168,85,247,.14);font-size:16px}
-.side-row span{color:#998aa3}
-.side-row strong{color:#e2c5fa;text-align:right}
-/* DUO */
-.duo-card{padding:35px;background:linear-gradient(130deg,#130c1b,#09080c);border:1px solid var(--border);position:relative;overflow:hidden}
-.duo-card:after{content:"ZEROX";position:absolute;right:-10px;bottom:-24px;font:900 100px Orbitron,sans-serif;color:rgba(168,85,247,.045);pointer-events:none}
-.duo-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
-.duo-title{font:800 clamp(25px,4vw,40px) Orbitron,sans-serif;margin:12px 0}
-.duo-copy{color:#a99caf;font-size:18px;line-height:1.7;max-width:700px}
-.duo-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:30px}
-.duo-stat{background:#0b0810;border:1px solid rgba(168,85,247,.16);padding:20px 10px;text-align:center}
-.duo-stat strong{display:block;font:700 clamp(18px,2.5vw,25px) Orbitron,sans-serif;color:var(--bright)}
-.duo-stat span{display:block;margin-top:9px;color:#8f8098;font:9px Orbitron,sans-serif;letter-spacing:1px}
-/* TOURNAMENTS */
-.tournament{border:1px solid var(--border);background:linear-gradient(125deg,#130c1a,#09080c);padding:clamp(25px,5vw,55px);position:relative;overflow:hidden}
-.tournament:before{content:"";position:absolute;width:280px;height:280px;right:-70px;top:-80px;border-radius:50%;background:rgba(168,85,247,.12);filter:blur(55px)}
-.tournament-content{position:relative;z-index:1}
-.coming{display:inline-block;padding:9px 12px;border:1px solid #a855f7;color:#ddb9ff;font:10px Orbitron,sans-serif;letter-spacing:2px}
-.tournament h3{font:900 clamp(30px,6vw,57px) Orbitron,sans-serif;margin:23px 0}
-.tournament p{max-width:650px;color:#b4a6bb;font-size:19px;line-height:1.7}
-.tournament-points{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.tournament-points span{padding:10px 13px;background:#150d1d;border:1px solid var(--border);color:#c8b4d2;font-size:14px}
-/* CONTACT */
-.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
-.contact-link{display:block;padding:25px;text-decoration:none;border:1px solid var(--border);background:#100c16;transition:.25s}
-.contact-link:hover{transform:translateY(-4px);border-color:var(--purple);box-shadow:0 0 24px rgba(168,85,247,.13)}
-.contact-type{color:var(--purple);font:10px Orbitron,sans-serif;letter-spacing:2px}
-.contact-value{margin-top:11px;font-size:20px;font-weight:700;overflow-wrap:anywhere}
-.contact-hint{margin-top:5px;color:#8c7b96;font-size:14px}
-.tracker-box{margin-top:20px;padding:25px;border:1px solid var(--border);background:#0d0911;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.tracker-box p{color:#9f90a8;margin-top:7px;font-size:15px}
-footer{padding:35px 5%;border-top:1px solid var(--border);text-align:center;color:#71647a;font:10px Orbitron,sans-serif;letter-spacing:2px;line-height:2}
-footer strong{color:#c88aff}
-/* INTRO + SECRET */
-#intro{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:#060409;transition:opacity .8s,visibility .8s}
-#intro.hide{opacity:0;visibility:hidden;pointer-events:none}
-.intro-inner{text-align:center;padding:20px}
-.intro-kicker{color:var(--purple);font:10px Orbitron,sans-serif;letter-spacing:4px}
-.intro-title{font:900 clamp(38px,8vw,80px) Orbitron,sans-serif;margin:25px 0;text-shadow:0 0 35px #7623b3}
-.intro-title span{color:var(--bright)}
-.intro-line{width:min(270px,70vw);height:3px;background:#26172f;margin:auto;overflow:hidden}
-.intro-line i{display:block;width:0;height:100%;background:var(--bright);animation:load 3s ease forwards}
-.intro-sub{color:#887391;font:9px Orbitron,sans-serif;letter-spacing:3px;margin-top:22px}
-@keyframes load{to{width:100%}}
-#secretEgg{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:rgba(5,2,8,.98);text-align:center;padding:20px}
-#secretEgg.show{display:flex;animation:appear .35s ease}
-#secretEgg h2{font:900 clamp(27px,6vw,65px) Orbitron,sans-serif;text-shadow:0 0 28px var(--purple)}
-#secretEgg p{color:var(--bright);letter-spacing:4px;margin-top:22px}
-@keyframes appear{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:scale(1)}}
-@media(max-width:850px){
-  .menu-btn{display:block}
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;padding:20px 5%;background:rgba(7,6,10,.98);border-bottom:1px solid var(--border);flex-direction:column;align-items:flex-start;gap:20px}
-  .nav-links.open{display:flex}
-  .hero-stamp{right:-20px;bottom:9%}
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
-  .player-card{grid-template-columns:1fr}
-  .player-side{border-left:0;border-top:1px solid var(--border)}
-  .duo-stats{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:520px){
-  section{padding:75px 0}
-  .hero h1{letter-spacing:-2px}
-  .hero-meta{gap:14px}
-  .stats-grid{gap:9px}
-  .stat{padding:21px 12px}
-  .stat-value{font-size:21px}
-  .player-main,.player-side{padding:25px}
-  .duo-card{padding:23px}
-  .contact-grid{grid-template-columns:1fr}
-  .pr-panel{padding:21px}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-}
+:root{--bg:#07050d;--panel:#10091b;--panel2:#160c25;--purple:#a100ff;--violet:#7c2bff;--pink:#e02cff;--text:#f5edff;--muted:#b4a4c9;--line:#522080;--glow:0 0 26px #9500ff55}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:82px}body{margin:0;background:radial-gradient(ellipse at 12% 0%,#270b45 0,transparent 36%),radial-gradient(ellipse at 92% 35%,#19062c 0,transparent 32%),var(--bg);color:var(--text);font-family:Rajdhani,Arial,sans-serif;font-size:18px}a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(1180px,92%);margin:auto}.topbar{position:sticky;top:0;z-index:20;background:#080510eF;border-bottom:1px solid #61249a;backdrop-filter:blur(14px)}.nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font:900 22px Orbitron,sans-serif;letter-spacing:-1px}.brand span,.accent{color:#c03bff;text-shadow:0 0 18px #a100ff66}.navlinks{display:flex;gap:24px;align-items:center}.navlinks a{font:600 11px Orbitron,sans-serif;letter-spacing:1.5px;color:#d7c9e8}.navlinks a:hover{color:#d14dff}.navicons{display:flex;gap:13px;color:#bd49ff;font:700 17px Orbitron}.hero{min-height:480px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:35px;padding:65px 0 55px;position:relative}.eyebrow{font:600 11px Orbitron,sans-serif;letter-spacing:4px;color:#d05bff}.hero h1{font:900 clamp(42px,7vw,82px)/.98 Orbitron,sans-serif;margin:18px 0 14px;letter-spacing:-4px}.hero h1 span{color:#b31cff}.tagline{letter-spacing:5px;font:600 12px Orbitron,sans-serif;color:#d8c9e8}.pills{display:flex;gap:9px;flex-wrap:wrap;margin:23px 0}.pill{border:1px solid #7827b5;padding:6px 11px;border-radius:5px;font:600 10px Orbitron,sans-serif;letter-spacing:1px;background:#1a0a2a}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(110deg,#8b00ff,#be24ff);color:white;padding:13px 20px;border:1px solid #db8cff;border-radius:5px;font:700 11px Orbitron,sans-serif;letter-spacing:1px;box-shadow:var(--glow);transition:.2s}.btn:hover{transform:translateY(-2px);filter:brightness(1.15)}.hero-art{min-height:280px;border:1px solid #6324a0;border-radius:14px;background:linear-gradient(140deg,#200a37,#0a0711 70%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:var(--glow)}.hero-art:before,.hero-art:after{content:"";position:absolute;width:300px;height:300px;border:1px solid #a100ff55;transform:rotate(35deg);box-shadow:0 0 60px #8d00ff22}.hero-art:after{width:210px;height:210px;transform:rotate(55deg)}.sigil{z-index:1;text-align:center;font:900 clamp(55px,8vw,100px) Orbitron,sans-serif;color:#bd29ff;text-shadow:0 0 28px #a100ff88;transform:skew(-8deg)}.sigil small{display:block;font-size:12px;letter-spacing:5px;color:#eee3ff;margin-top:10px}.section{padding:25px 0 8px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:15px}.section-index{font:600 11px Orbitron,sans-serif;letter-spacing:2px;color:#c54cff}.section h2{font:800 clamp(22px,3.3vw,34px) Orbitron,sans-serif;margin:5px 0 0}.sub{color:var(--muted);margin:5px 0 0}.stats-layout{display:grid;grid-template-columns:1.3fr .8fr;gap:14px}.panel{background:linear-gradient(145deg,#120a1eeb,#090610f5);border:1px solid #51217d;border-radius:8px;padding:18px;box-shadow:0 12px 35px #0004}.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.stat{border:1px solid #60228f;border-radius:5px;padding:14px 7px;text-align:center;background:linear-gradient(150deg,#190c28,#090611)}.stat .number{display:block;font:800 clamp(19px,2.4vw,27px) Orbitron,sans-serif;margin:7px 0 4px}.stat .label{font:600 9px Orbitron,sans-serif;letter-spacing:1.3px;color:#c9b7df}.ico{color:#c13cff;font-size:19px}.prbig{font:900 35px Orbitron,sans-serif;color:#d06aff;margin:8px 0}.bar{height:10px;border:1px solid #542080;border-radius:9px;overflow:hidden;margin:13px 0;background:#05030a}.bar span{display:block;width:76%;height:100%;background:linear-gradient(90deg,#8d00ff,#d449ff);box-shadow:0 0 16px #b100ff}.split{display:flex;justify-content:space-between;color:var(--muted);font-size:15px}.mini-box{border:1px solid #51217d;padding:12px;border-radius:5px;margin-top:13px;font-size:15px}.mini-box strong{color:#d35bff}.players{display:grid;grid-template-columns:1fr 1fr;gap:14px}.player{display:grid;grid-template-columns:.65fr 1fr;gap:15px;align-items:center;min-height:245px;overflow:hidden}.player-art{height:100%;min-height:205px;border-radius:5px;background:radial-gradient(circle at 50% 40%,#6f13a7,#170a27 48%,#08050d);display:flex;align-items:center;justify-content:center;font:900 28px Orbitron,sans-serif;color:#d04cff;text-shadow:0 0 20px #a100ff}.player h3{font:800 23px Orbitron,sans-serif;margin:0 0 6px}.player .role{font:600 10px Orbitron,sans-serif;letter-spacing:2px;color:#bca7d4}.playerlinks{display:grid;gap:7px;margin:14px 0;color:#dfd1ee;font-size:16px;overflow-wrap:anywhere}.playerlinks a:hover{color:#d456ff}.tournament{margin-top:24px;border:1px solid #7729ac;border-radius:9px;overflow:hidden;background:linear-gradient(110deg,#19092b 0%,#0b0712 60%,#1b0b2b 100%);box-shadow:var(--glow);position:relative}.tournament:before{content:"";position:absolute;right:-55px;top:-130px;width:420px;height:420px;border:1px solid #8d29c655;transform:rotate(42deg);box-shadow:0 0 0 35px #8d29c611,0 0 0 70px #8d29c609;pointer-events:none}.tour-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;padding:24px;position:relative;z-index:1}.coming{display:inline-block;border:1px solid #a93cff;color:#e2b5ff;padding:7px 11px;font:700 10px Orbitron,sans-serif;letter-spacing:1px;border-radius:4px}.tour-title{font:900 clamp(28px,4.5vw,48px)/1.1 Orbitron,sans-serif;margin:15px 0 10px}.tour-title span{color:#b72aff}.tour-meta{font:600 10px Orbitron,sans-serif;letter-spacing:2px;color:#c9b5dd}.tour-info{display:grid;gap:0;border:1px solid #5e2787;border-radius:6px;background:#0a0613e8;padding:10px 15px;align-self:center}.tour-row{display:grid;grid-template-columns:30px 1fr;gap:10px;padding:11px 0;border-bottom:1px solid #3a1a52}.tour-row:last-child{border:0}.tour-row b{display:block;font:700 10px Orbitron,sans-serif;color:#d45bff;letter-spacing:1px;margin-bottom:4px}.tour-row span{font-size:16px}.clan{display:grid;grid-template-columns:.7fr 1.4fr 1fr;gap:22px;align-items:center;margin-top:16px}.clan-logo{font:900 clamp(30px,4vw,45px) Orbitron,sans-serif;color:#d7b9ff;text-shadow:0 0 22px #9c00ff66}.clan h3{font:800 17px Orbitron,sans-serif;margin:0 0 8px}.requirements{border-left:1px solid #54217b;padding-left:20px;color:#d9c9e8;font-size:15px}.requirements div{margin:4px 0}.requirements div:before{content:"✓";color:#cf4cff;margin-right:8px}.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.contact-card{border:1px solid #4e2078;border-radius:6px;padding:15px;background:#10091b;min-width:0}.contact-card .c-icon{font-size:22px;color:#c83dff}.contact-card b{display:block;font:700 10px Orbitron,sans-serif;letter-spacing:1px;margin:9px 0 5px}.contact-card span,.contact-card a{font-size:15px;overflow-wrap:anywhere;color:#c8b6dd}.contact-card a:hover{color:#e29aff}footer{margin-top:25px;border-top:1px solid #4d1c71;padding:22px 0 30px;color:#9f8cb5;font-size:13px}.foot{display:flex;justify-content:space-between;gap:16px;align-items:center}.foot strong{font:800 17px Orbitron,sans-serif;color:#eee}.note{font-size:13px;color:#a995bd;margin-top:10px}.mobile-menu{display:none}
+@media(max-width:850px){.navlinks{gap:12px}.navlinks a{font-size:9px}.navicons{display:none}.hero{grid-template-columns:1fr;padding:45px 0 30px;gap:22px}.hero-art{min-height:190px}.stats-layout{grid-template-columns:1fr}.players{grid-template-columns:1fr}.tour-inner{grid-template-columns:1fr}.clan{grid-template-columns:1fr 1.5fr}.requirements{grid-column:1/-1;border-left:0;border-top:1px solid #54217b;padding:14px 0 0}.contact-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.nav{height:auto;min-height:62px;align-items:flex-start;padding:16px 0;flex-wrap:wrap}.brand{font-size:18px}.navlinks{order:3;width:100%;justify-content:space-between;gap:5px}.navlinks a{font-size:8px;letter-spacing:.7px}.hero h1{letter-spacing:-2px}.tagline{letter-spacing:2px}.statgrid{grid-template-columns:repeat(2,1fr)}.player{grid-template-columns:90px 1fr;padding:12px;gap:12px}.player-art{min-height:165px;font-size:18px}.player h3{font-size:18px}.panel{padding:13px}.tour-inner{padding:17px}.clan{grid-template-columns:1fr}.requirements{grid-column:auto}.contact-grid{grid-template-columns:1fr 1fr}.contact-card{padding:12px}.foot{flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
-
-<div id="intro" aria-label="VXR SMOXY introduction">
-  <div class="intro-inner">
-    <div class="intro-kicker">VXR SYSTEM // INITIALIZING</div>
-    <div class="intro-title">VXR <span>SMOXY</span></div>
-    <div class="intro-line"><i></i></div>
-    <div class="intro-sub">FORTNITE // COMPETITIVE PLAYER</div>
-  </div>
+<header class="topbar"><div class="wrap nav">
+<a class="brand" href="#home"><span>VXR</span> SMOXY</a>
+<nav class="navlinks"><a href="#home">HOME</a><a href="#stats">STATS</a><a href="#players">PLAYERS</a><a href="#tournament">TOURNAMENT</a><a href="#clan">CLAN</a><a href="#contact">CONTACT</a></nav>
+<div class="navicons"><a href="https://discord.gg/9pXXYwpWm" aria-label="Discord">◉</a><a href="https://www.instagram.com/susage.eo/" aria-label="Instagram">◎</a><a href="https://fortnitetracker.com/fortnite/profile/epic/VXR%20Smoxy%E3%83%84/epic-events/overview" aria-label="Fortnite Tracker">F</a></div>
+</div></header>
+<main>
+<section class="wrap hero" id="home">
+<div><div class="eyebrow">FORTNITE COMPETITIVE PLAYER</div><h1><span>VXR</span> SMOXY</h1><div class="tagline">NO LIMITS. JUST PLAY.</div><div class="pills"><span class="pill">♜ EU</span><span class="pill">◈ ZERO BUILD</span><span class="pill">♧ CONSOLE</span><span class="pill">✦ VXR CLAN</span></div><a class="btn" href="#stats">VIEW MY STATS <span>→</span></a></div>
+<div class="hero-art"><div class="sigil">VXR<small>COMPETE • IMPROVE • WIN</small></div></div>
+</section>
+<section class="wrap section" id="stats">
+<div class="section-head"><div><div class="section-index">01 // PLAYER STATS</div><h2>FORTNITE <span class="accent">STATS</span></h2><p class="sub">My current stats, PR and competitive progress.</p></div></div>
+<div class="stats-layout">
+<div class="panel"><div class="statgrid">
+<div class="stat"><span class="ico">♜</span><span class="number">428</span><span class="label">WINS</span></div>
+<div class="stat"><span class="ico">％</span><span class="number">6.20%</span><span class="label">WIN RATE</span></div>
+<div class="stat"><span class="ico">⌖</span><span class="number">16,348</span><span class="label">KILLS</span></div>
+<div class="stat"><span class="ico">▥</span><span class="number">2.52</span><span class="label">K/D RATIO</span></div>
+<div class="stat"><span class="ico">♢</span><span class="number">19</span><span class="label">CURRENT PR</span></div>
+<div class="stat"><span class="ico">♛</span><span class="number">UNREAL</span><span class="label">BEST RANK</span></div>
+<div class="stat"><span class="ico">▣</span><span class="number">60 FPS</span><span class="label">PLATFORM</span></div>
+<div class="stat"><span class="ico">◈</span><span class="number">ZERO BUILD</span><span class="label">MAIN MODE</span></div>
+</div></div>
+<div class="panel"><div class="section-index">POWER RANKING // 2026</div><div class="prbig">♛ 19 PR</div><div class="bar"><span></span></div><div class="split"><span>FIRST PR: <b>4.9</b></span><span>CURRENT PR: <b>19</b></span></div><div class="mini-box"><strong>FIRST COMPETITIVE PR</strong><br>1. 8. 2026 — Console Duos ZB Cash Cup<br><br>Placement: <b>#5,096</b> &nbsp; • &nbsp; PR: <b>4.9</b></div><p class="sub">From the first PR to the current 19. The grind continues.</p><a href="https://fortnitetracker.com/fortnite/profile/epic/VXR%20Smoxy%E3%83%84/epic-events/overview" target="_blank" rel="noopener" class="btn">OPEN FORTNITE TRACKER ↗</a></div>
 </div>
-
-<nav>
-  <a class="brand" href="#home">VXR SMOXY</a>
-  <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">MENU ☰</button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#stats">STATS</a></li>
-    <li><a href="#player">PLAYER</a></li>
-    <li><a href="#zerox">ZEROX</a></li>
-    <li><a href="#tournaments">CUSTOMS</a></li>
-    <li><a href="#contact">CONTACT</a></li>
-  </ul>
-</nav>
-
-<header class="hero" id="home">
-  <div class="wrap">
-    <div class="hero-content">
-      <div class="status"><span class="status-dot"></span> FORTNITE // COMPETITIVE PLAYER</div>
-      <h1>VXR <span>SMOXY</span></h1>
-      <p class="hero-copy">Zero Build competitor. Always improving. Always grinding. Welcome to my official Fortnite player hub.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#stats">VIEW MY STATS ↘</a>
-        <a class="btn btn-outline" href="#tournaments">FUTURE CUSTOMS ↗</a>
-      </div>
-      <div class="hero-meta">
-        <div>REGION <strong>EU</strong></div>
-        <div>MODE <strong>ZERO BUILD</strong></div>
-        <div>TEAM <strong>VXR</strong></div>
-      </div>
-    </div>
-    <div class="hero-stamp" aria-hidden="true">VXR</div>
-  </div>
-</header>
-
-<section id="stats" class="stats-section">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">01 // PLAYER DATA</div>
-      <h2 class="heading">FORTNITE <span class="purple">STATS</span></h2>
-      <p>My current player profile and competitive progress.</p>
-    </div>
-
-    <div class="stats-grid">
-      <div class="stat"><div class="stat-value">428</div><div class="stat-label">TOTAL WINS</div><div class="stat-note">Lifetime stats</div></div>
-      <div class="stat"><div class="stat-value">6.20%</div><div class="stat-label">WIN RATE</div><div class="stat-note">Lifetime stats</div></div>
-      <div class="stat"><div class="stat-value">16,348</div><div class="stat-label">TOTAL KILLS</div><div class="stat-note">Lifetime stats</div></div>
-      <div class="stat"><div class="stat-value">2.52</div><div class="stat-label">K/D RATIO</div><div class="stat-note">Lifetime stats</div></div>
-      <div class="stat"><div class="stat-value">19</div><div class="stat-label">CURRENT PR</div><div class="stat-note">2026 PR</div></div>
-      <div class="stat"><div class="stat-value">UNREAL</div><div class="stat-label">BEST RANK</div><div class="stat-note">Personal best</div></div>
-      <div class="stat"><div class="stat-value">60 FPS</div><div class="stat-label">PLATFORM</div><div class="stat-note">Console setup</div></div>
-      <div class="stat"><div class="stat-value">ZERO BUILD</div><div class="stat-label">MAIN MODE</div><div class="stat-note">Competitive focus</div></div>
-    </div>
-
-    <div class="pr-panel">
-      <div class="pr-top">
-        <h3>POWER RANKING // 2026</h3>
-        <div class="pr-number">19 PR</div>
-      </div>
-      <div class="pr-track"><div class="pr-fill" id="prFill"></div></div>
-      <div class="pr-labels"><span>FIRST PR: 4.9</span><span>CURRENT PR: 19</span></div>
-      <div class="pr-details">
-        <strong>FIRST COMPETITIVE PR</strong><br>
-        1 August 2026 — Console Duos Zero Build Cash Cup<br>
-        Placement: <strong>#5,096</strong> · First PR: <strong>4.9</strong><br><br>
-        Every cup is another chance to improve. The grind continues.
-      </div>
-    </div>
-  </div>
 </section>
-
-<section id="player">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">02 // PLAYER PROFILE</div>
-      <h2 class="heading">THE PLAYER <span class="purple">BEHIND VXR</span></h2>
-    </div>
-    <div class="player-card">
-      <div class="player-main">
-        <div class="player-label">VXR // EU CONSOLE</div>
-        <h3 class="player-name">VXR SMOXY</h3>
-        <p class="player-desc">Focused on competitive Fortnite, Zero Build tournaments, rotations, clutch plays and getting better with every tournament. The goal is progress — one game at a time.</p>
-        <div class="player-tags">
-          <span class="tag">ZERO BUILD</span>
-          <span class="tag">EU REGION</span>
-          <span class="tag">CONSOLE</span>
-          <span class="tag">COMPETITIVE</span>
-        </div>
-        <div class="hero-actions">
-          <a class="btn btn-outline" href="https://fortnitetracker.com/fortnite/profile/epic/VXR%20Smoxy%E3%83%84/epic-events/overview" target="_blank" rel="noopener noreferrer">FORTNITE TRACKER ↗</a>
-        </div>
-      </div>
-      <div class="player-side">
-        <div class="side-row"><span>Player name</span><strong>VXR Smoxyツ</strong></div>
-        <div class="side-row"><span>Current PR</span><strong>19</strong></div>
-        <div class="side-row"><span>Lifetime PR</span><strong>27</strong></div>
-        <div class="side-row"><span>Best rank</span><strong>Unreal</strong></div>
-        <div class="side-row"><span>Main mode</span><strong>Zero Build</strong></div>
-        <div class="side-row"><span>Competitive goal</span><strong>Keep improving</strong></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="zerox">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">03 // MY FORTNITE DUO</div>
-      <h2 class="heading">SMOXY <span class="purple">× ZEROX</span></h2>
-      <p>One duo. One mindset. Always pushing forward.</p>
-    </div>
-    <div class="duo-card">
-      <div class="duo-top">
-        <div>
-          <div class="kicker">VXR ZEROX // SUPPORT</div>
-          <h3 class="duo-title">MY FN DUO</h3>
-          <p class="duo-copy">Zerox is my Fortnite duo and support player. Teamwork, comms and helping each other in fights — that's what our duo is about.</p>
-        </div>
-        <a class="btn btn-outline" href="https://www.instagram.com/kristof__tt/" target="_blank" rel="noopener noreferrer">ZEROX INSTAGRAM ↗</a>
-      </div>
-      <div class="duo-stats">
-        <div class="duo-stat"><strong>210</strong><span>WINS</span></div>
-        <div class="duo-stat"><strong>5.60%</strong><span>WIN RATE</span></div>
-        <div class="duo-stat"><strong>8,975</strong><span>KILLS</span></div>
-        <div class="duo-stat"><strong>2.54</strong><span>K/D</span></div>
-        <div class="duo-stat"><strong>0</strong><span>PR LISTED</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="tournaments">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">04 // COMMUNITY PROJECT</div>
-      <h2 class="heading">SMOXY <span class="purple">CUSTOMS</span></h2>
-      <p>Our own Fortnite tournaments — planned for the future.</p>
-    </div>
-    <div class="tournament">
-      <div class="tournament-content">
-        <span class="coming">● COMING SOON</span>
-        <h3>PLAY. COMPETE. <span class="purple">WIN.</span></h3>
-        <p>In the future, I want to host my own Fortnite custom tournaments with a chance to compete for cash prizes. This section will have tournament announcements, dates, formats, rules and registration when the events are ready.</p>
-        <div class="tournament-points">
-          <span>🎮 Fortnite customs</span>
-          <span>🏆 Competitive matches</span>
-          <span>📅 Events announced here</span>
-          <span>💜 Community tournaments</span>
-        </div>
-        <div class="hero-actions">
-          <a class="btn btn-outline" href="https://discord.gg/9pXXYwpWm" target="_blank" rel="noopener noreferrer">JOIN DISCORD ↗</a>
-          <a class="btn btn-outline" href="https://www.instagram.com/susage.eo/" target="_blank" rel="noopener noreferrer">FOLLOW FOR UPDATES ↗</a>
-        </div>
-        <p style="font-size:14px;margin-top:24px;color:#84758d">No event is open yet. Prize details and rules will be announced before the first tournament.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">05 // CONNECT</div>
-      <h2 class="heading">FIND <span class="purple">VXR SMOXY</span></h2>
-      <p>Follow the journey, join the community and keep up with future customs.</p>
-    </div>
-    <div class="contact-grid">
-      <a class="contact-link" href="https://www.instagram.com/susage.eo/" target="_blank" rel="noopener noreferrer">
-        <div class="contact-type">01 // INSTAGRAM</div>
-        <div class="contact-value">@susage.eo ↗</div>
-        <div class="contact-hint">Reels, updates and Fortnite content</div>
-      </a>
-      <a class="contact-link" href="https://discord.gg/9pXXYwpWm" target="_blank" rel="noopener noreferrer">
-        <div class="contact-type">02 // DISCORD SERVER</div>
-        <div class="contact-value">JOIN THE COMMUNITY ↗</div>
-        <div class="contact-hint">Gaming, friends and future custom updates</div>
-      </a>
-      <a class="contact-link" href="mailto:tomaseksus5@gmail.com">
-        <div class="contact-type">03 // EMAIL</div>
-        <div class="contact-value">CONTACT SMOXY ↗</div>
-        <div class="contact-hint">tomaseksus5@gmail.com</div>
-      </a>
-      <a class="contact-link" href="https://fortnitetracker.com/fortnite/profile/epic/VXR%20Smoxy%E3%83%84/epic-events/overview" target="_blank" rel="noopener noreferrer">
-        <div class="contact-type">04 // TRACKER</div>
-        <div class="contact-value">VIEW MY PR ↗</div>
-        <div class="contact-hint">Competitive event profile</div>
-      </a>
-    </div>
-    <div class="tracker-box">
-      <div><div class="kicker">VXR // OFFICIAL PLAYER HUB</div><p>Stats, duo info and future tournament announcements in one place.</p></div>
-      <a class="btn btn-primary" href="#home">BACK TO TOP ↑</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <strong>VXR SMOXY</strong> // FORTNITE COMPETITIVE PLAYER<br>
-  UNOFFICIAL PLAYER WEBSITE · NOT AFFILIATED WITH EPIC GAMES
-</footer>
-
-<div id="secretEgg" role="dialog" aria-modal="true" aria-label="Secret found">
-  <div>
-    <div class="kicker">SYSTEM // OVERRIDE</div>
-    <h2>YOU FOUND THE SECRET.</h2>
-    <p>VXR SMOXY // NO LIMITS. JUST PLAY.</p>
-    <button class="btn btn-outline" id="closeEgg" style="margin-top:28px">CLOSE ×</button>
-  </div>
+<section class="wrap section" id="players">
+<div class="section-head"><div><div class="section-index">02 // THE PLAYERS</div><h2>MEET THE <span class="accent">TEAM</span></h2></div></div>
+<div class="players">
+<article class="panel player"><div class="player-art">SMOXY</div><div><h3>VXR <span class="accent">SMOXY</span></h3><div class="role">PLAYER / FORTNITE</div><div class="pills"><span class="pill">EU</span><span class="pill">ZERO BUILD</span><span class="pill">CONSOLE</span><span class="pill">VXR</span></div><div class="playerlinks"><a href="https://www.instagram.com/susage.eo/" target="_blank" rel="noopener">◎ &nbsp; @susage.eo</a><a href="https://discord.gg/9pXXYwpWm" target="_blank" rel="noopener">◉ &nbsp; VXR SMOXY • Discord Server</a><a href="mailto:tomaseksus5@gmail.com">✉ &nbsp; tomaseksus5@gmail.com</a><a href="https://fortnitetracker.com/fortnite/profile/epic/VXR%20Smoxy%E3%83%84/epic-events/overview" target="_blank" rel="noopener">↗ &nbsp; Fortnite Tracker</a></div><a class="btn" href="https://www.instagram.com/susage.eo/" target="_blank" rel="noopener">FOLLOW / JOIN →</a></div></article>
+<article class="panel player"><div class="player-art">ZEROX</div><div><h3>VXR <span class="accent">ZEROX</span></h3><div class="role">DUO / SUPPORT</div><div class="pills"><span class="pill">EU</span><span class="pill">ZERO BUILD</span><span class="pill">CONSOLE</span><span class="pill">VXR</span></div><div class="playerlinks"><a href="https://www.instagram.com/kristof__tt/" target="_blank" rel="noopener">◎ &nbsp; @kristof__tt</a><a href="mailto:Kristof.tomas19@gmail.com">✉ &nbsp; Kristof.tomas19@gmail.com</a><span>♜ &nbsp; 210 Wins • 8,975 Kills</span><span>◈ &nbsp; 2.54 K/D • 5.60% Win Rate</span></div><a class="btn" href="https://www.instagram.com/kristof__tt/" target="_blank" rel="noopener">FOLLOW ZEROX →</a></div></article>
 </div>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  // Intro
-  const intro = document.getElementById("intro");
-  window.setTimeout(() => intro?.classList.add("hide"), 4200);
-
-  // Mobile navigation
-  const menuBtn = document.getElementById("menuBtn");
-  const navLinks = document.getElementById("navLinks");
-
-  menuBtn?.addEventListener("click", () => {
-    const open = navLinks.classList.toggle("open");
-    menuBtn.setAttribute("aria-expanded", String(open));
-  });
-
-  navLinks?.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("open");
-      menuBtn?.setAttribute("aria-expanded", "false");
-    });
-  });
-
-  // Animate PR bar
-  const prFill = document.getElementById("prFill");
-  const animatePR = () => {
-    if (prFill) prFill.style.width = "76%";
-  };
-  if ("IntersectionObserver" in window && prFill) {
-    const observer = new IntersectionObserver(entries => {
-      if (entries.some(entry => entry.isIntersecting)) {
-        animatePR();
-        observer.disconnect();
-      }
-    }, { threshold: 0.25 });
-    observer.observe(prFill);
-  } else {
-    animatePR();
-  }
-
-  // Secret: click the VXR SMOXY logo five times quickly
-  const brand = document.querySelector(".brand");
-  const egg = document.getElementById("secretEgg");
-  const closeEgg = document.getElementById("closeEgg");
-  let clicks = 0;
-  let clickTimer;
-  let eggTimer;
-
-  const hideEgg = () => {
-    egg?.classList.remove("show");
-    window.clearTimeout(eggTimer);
-  };
-
-  brand?.addEventListener("click", event => {
-    clicks++;
-    window.clearTimeout(clickTimer);
-    clickTimer = window.setTimeout(() => clicks = 0, 2000);
-
-    if (clicks >= 5) {
-      event.preventDefault();
-      clicks = 0;
-      egg?.classList.add("show");
-      window.clearTimeout(eggTimer);
-      eggTimer = window.setTimeout(hideEgg, 5000);
-    }
-  });
-
-  closeEgg?.addEventListener("click", hideEgg);
-  egg?.addEventListener("click", event => {
-    if (event.target === egg) hideEgg();
-  });
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape") hideEgg();
-  });
-});
-</script>
+</section>
+<section class="wrap section" id="tournament">
+<div class="section-head"><div><div class="section-index">03 // VXR TOURNAMENT</div><h2>THE NEXT LEVEL</h2></div><span class="coming">♛ COMING SOON</span></div>
+<div class="tournament"><div class="tour-inner"><div><div class="tour-meta">VXR ESPORTS PRESENTS</div><div class="tour-title">VXR <span>SOLO CASH CUP</span></div><div class="tour-meta">SOLO BUILDS &nbsp; • &nbsp; CASH PRIZE &nbsp; • &nbsp; EU</div><p>Our first official VXR tournament. Solo Builds, cash prizes and a chance to prove yourself. The event will be commentated live by VXR SMOXY and VXR ZEROX.</p><p class="sub">More details, rules and registration will be announced soon.</p><a class="btn" href="https://discord.gg/9pXXYwpWm" target="_blank" rel="noopener">STAY TUNED ON DISCORD →</a></div>
+<div class="tour-info"><div class="tour-row"><span class="ico">♧</span><div><b>MODE</b><span>Solo Builds</span></div></div><div class="tour-row"><span class="ico">◉</span><div><b>COMMENTATORS</b><span>SMOXY + ZEROX</span></div></div><div class="tour-row"><span class="ico">♜</span><div><b>PRIZE POOL</b><span>To be announced</span></div></div><div class="tour-row"><span class="ico">◷</span><div><b>DATE & REGISTRATION</b><span>Coming soon</span></div></div></div></div></div>
+<p class="note">Tournament date, eligibility, rules, prize details and registration will be published before the event opens.</p>
+</section>
+<section class="wrap section" id="clan">
+<div class="panel clan"><div class="clan-logo">♛ VXR<br><span class="accent">CLAN</span><div class="role">BECOME PART OF THE TEAM</div></div><div><h3>WANT TO JOIN THE <span class="accent">VXR CLAN?</span></h3><p class="sub">Want to be part of the VXR clan? Contact SMOXY or ZEROX. We’ll train with you, help you improve and give you a chance to grow as a player.</p><div class="playerlinks"><a href="mailto:tomaseksus5@gmail.com">✉ Contact SMOXY — tomaseksus5@gmail.com</a><a href="mailto:Kristof.tomas19@gmail.com">✉ Contact ZEROX — Kristof.tomas19@gmail.com</a><a href="https://discord.gg/9pXXYwpWm" target="_blank" rel="noopener">◉ Join the Discord server</a></div></div><div class="requirements"><h3>CLAN EXPECTATIONS</h3><div>Good mentality</div><div>Willing to improve</div><div>Active on Discord</div><div>Use <b>VXR</b> before your Fortnite name after joining</div></div></div>
+</section>
+<section class="wrap section" id="contact">
+<div class="section-head"><div><div class="section-index">04 // CONTACT</div><h2>FIND <span class="accent">ME</span></h2><p class="sub">Follow, join, and be part of the journey.</p></div></div>
+<div class="contact-grid">
+<div class="contact-card"><div class="c-icon">◎</div><b>INSTAGRAM</b><a href="https://www.instagram.com/susage.eo/" target="_blank" rel="noopener">@susage.eo</a><br><span>Reels • Updates • Moments</span></div>
+<div class="contact-card"><div class="c-icon">◉</div><b>DISCORD</b><a href="https://discord.gg/9pXXYwpWm" target="_blank" rel="noopener">VXR SMOXY</a><br><span>Join the community</span></div>
+<div class="contact-card"><div class="c-icon">✉</div><b>EMAIL — SMOXY</b><a href="mailto:tomaseksus5@gmail.com">tomaseksus5@gmail.com</a><br><span>Business & collabs</span></div>
+<div class="contact-card"><div class="c-icon">✉</div><b>EMAIL — ZEROX</b><a href="mailto:Kristof.tomas19@gmail.com">Kristof.tomas19@gmail.com</a><br><span>Duo & clan contact</span></div>
+</div>
+</section>
+</main>
+<footer><div class="wrap foot"><strong><span class="accent">VXR</span> SMOXY</strong><span class="eyebrow">NO LIMITS. JUST PLAY.</span><span>© 2026 VXR SMOXY. All rights reserved.</span></div></footer>
 </body>
 </html>

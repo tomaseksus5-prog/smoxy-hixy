@@ -7,550 +7,1505 @@
 <meta name="theme-color" content="#080510">
 <title>VXR SMOXY — Fortnite Competitive</title>
 <meta name="description" content="VXR SMOXY — Fortnite competitive, stats, VXR Clan a připravovaný VXR Solo Cash Cup.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{--bg:#07050d;--panel:#10091b;--panel2:#160c25;--purple:#a100ff;--violet:#7c2bff;--pink:#e02cff;--text:#f5edff;--muted:#b4a4c9;--line:#522080;--glow:0 0 26px #9500ff55}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:82px}
-body{margin:0;background:radial-gradient(ellipse at 12% 0%,#270b45 0,transparent 36%),radial-gradient(ellipse at 92% 35%,#19062c 0,transparent 32%),var(--bg);color:var(--text);font-family:Rajdhani,Arial,sans-serif;font-size:18px}
-a{color:inherit;text-decoration:none}
-button{font:inherit}
-.wrap{width:min(1180px,92%);margin:auto}
-.topbar{position:sticky;top:0;z-index:20;background:#080510eF;border-bottom:1px solid #61249a;backdrop-filter:blur(14px)}
-.nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{font:900 22px Orbitron,sans-serif;letter-spacing:-1px}
-.brand span,.accent{color:#c03bff;text-shadow:0 0 18px #a100ff66}
-.navlinks{display:flex;gap:24px;align-items:center}
-.navlinks a{font:600 11px Orbitron,sans-serif;letter-spacing:1.5px;color:#d7c9e8}
-.navlinks a:hover{color:#d14dff}
-.navicons{display:flex;gap:13px;color:#bd49ff;font:700 17px Orbitron}
-.hero{min-height:480px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:35px;padding:65px 0 55px;position:relative}
-.eyebrow{font:600 11px Orbitron,sans-serif;letter-spacing:4px;color:#d05bff}
-.hero h1{font:900 clamp(42px,7vw,82px)/.98 Orbitron,sans-serif;margin:18px 0 14px;letter-spacing:-4px}
-.hero h1 span{color:#b31cff}
-.tagline{letter-spacing:5px;font:600 12px Orbitron,sans-serif;color:#d8c9e8}
-.pills{display:flex;gap:9px;flex-wrap:wrap;margin:23px 0}
-.pill{border:1px solid #7827b5;padding:6px 11px;border-radius:5px;font:600 10px Orbitron,sans-serif;letter-spacing:1px;background:#1a0a2a}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(110deg,#8b00ff,#be24ff);color:white;padding:13px 20px;border:1px solid #db8cff;border-radius:5px;font:700 11px Orbitron,sans-serif;letter-spacing:1px;box-shadow:var(--glow);transition:.2s}
-.btn:hover{transform:translateY(-2px);filter:brightness(1.15)}
-.hero-art{min-height:280px;border:1px solid #6324a0;border-radius:14px;background:linear-gradient(140deg,#200a37,#0a0711 70%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:var(--glow)}
-.hero-art:before,.hero-art:after{content:"";position:absolute;width:300px;height:300px;border:1px solid #a100ff55;transform:rotate(35deg);box-shadow:0 0 60px #8d00ff22}
-.hero-art:after{width:210px;height:210px;transform:rotate(55deg)}
-.sigil{z-index:1;text-align:center;font:900 clamp(55px,8vw,100px) Orbitron,sans-serif;color:#bd29ff;text-shadow:0 0 28px #a100ff88;transform:skew(-8deg)}
-.sigil small{display:block;font-size:12px;letter-spacing:5px;color:#eee3ff;margin-top:10px}
-.section{padding:25px 0 8px}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:15px}
-.section-index{font:600 11px Orbitron,sans-serif;letter-spacing:2px;color:#c54cff}
-.section h2{font:800 clamp(22px,3.3vw,34px) Orbitron,sans-serif;margin:5px 0 0}
-.sub{color:var(--muted);margin:5px 0 0}
-.stats-layout{display:grid;grid-template-columns:1.3fr .8fr;gap:14px}
-.panel{background:linear-gradient(145deg,#120a1eeb,#090610f5);border:1px solid #51217d;border-radius:8px;padding:18px;box-shadow:0 12px 35px #0004}
-.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}
-.stat{border:1px solid #60228f;border-radius:5px;padding:14px 7px;text-align:center;background:linear-gradient(150deg,#190c28,#090611)}
-.stat .number{display:block;font:800 clamp(19px,2.4vw,27px) Orbitron,sans-serif;margin:7px 0 4px}
-.stat .label{font:600 9px Orbitron,sans-serif;letter-spacing:1.3px;color:#c9b7df}
-.ico{color:#c13cff;font-size:19px}
-.prbig{font:900 35px Orbitron,sans-serif;color:#d06aff;margin:8px 0}
-.bar{height:10px;border:1px solid #542080;border-radius:9px;overflow:hidden;margin:13px 0;background:#05030a}
-.bar span{display:block;width:76%;height:100%;background:linear-gradient(90deg,#8d00ff,#d449ff);box-shadow:0 0 16px #b100ff}
-.split{display:flex;justify-content:space-between;color:var(--muted);font-size:15px}
-.mini-box{border:1px solid #51217d;padding:12px;border-radius:5px;margin-top:13px;font-size:15px}
-.mini-box strong{color:#d35bff}
-.players{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.player{display:grid;grid-template-columns:.65fr 1fr;gap:15px;align-items:center;min-height:245px;overflow:hidden}
-.player-art{height:100%;min-height:205px;border-radius:5px;background:radial-gradient(circle at 50% 40%,#6f13a7,#170a27 48%,#08050d);display:flex;align-items:center;justify-content:center;font:900 28px Orbitron,sans-serif;color:#d04cff;text-shadow:0 0 20px #a100ff}
-.player h3{font:800 23px Orbitron,sans-serif;margin:0 0 6px}
-.player .role{font:600 10px Orbitron,sans-serif;letter-spacing:2px;color:#bca7d4}
-.playerlinks{display:grid;gap:7px;margin:14px 0;color:#dfd1ee;font-size:16px;overflow-wrap:anywhere}
-.playerlinks a:hover{color:#d456ff}
-.tournament{margin-top:24px;border:1px solid #7729ac;border-radius:9px;overflow:hidden;background:linear-gradient(110deg,#19092b 0%,#0b0712 60%,#1b0b2b 100%);box-shadow:var(--glow);position:relative}
-.tournament:before{content:"";position:absolute;right:-55px;top:-130px;width:420px;height:420px;border:1px solid #8d29c655;transform:rotate(42deg);box-shadow:0 0 0 35px #8d29c611,0 0 0 70px #8d29c609;pointer-events:none}
-.tour-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;padding:24px;position:relative;z-index:1}
-.coming{display:inline-block;border:1px solid #a93cff;color:#e2b5ff;padding:7px 11px;font:700 10px Orbitron,sans-serif;letter-spacing:1px;border-radius:4px}
-.tour-title{font:900 clamp(28px,4.5vw,48px)/1.1 Orbitron,sans-serif;margin:15px 0 10px}
-.tour-title span{color:#b72aff}
-.tour-meta{font:600 10px Orbitron,sans-serif;letter-spacing:2px;color:#c9b5dd}
-.tour-info{display:grid;gap:0;border:1px solid #5e2787;border-radius:6px;background:#0a0613e8;padding:10px 15px;align-self:center}
-.tour-row{display:grid;grid-template-columns:30px 1fr;gap:10px;padding:11px 0;border-bottom:1px solid #3a1a52}
-.tour-row:last-child{border:0}
-.tour-row b{display:block;font:700 10px Orbitron,sans-serif;color:#d45bff;letter-spacing:1px;margin-bottom:4px}
-.tour-row span{font-size:16px}
-.clan{display:grid;grid-template-columns:.7fr 1.4fr 1fr;gap:22px;align-items:center;margin-top:16px}
-.clan-logo{font:900 clamp(30px,4vw,45px) Orbitron,sans-serif;color:#d7b9ff;text-shadow:0 0 22px #9c00ff66}
-.clan h3{font:800 17px Orbitron,sans-serif;margin:0 0 8px}
-.requirements{border-left:1px solid #54217b;padding-left:20px;color:#d9c9e8;font-size:15px}
-.requirements div{margin:4px 0}
-.requirements div:before{content:"✓";color:#cf4cff;margin-right:8px}
-.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.contact-card{border:1px solid #4e2078;border-radius:6px;padding:15px;background:#10091b;min-width:0}
-.contact-card .c-icon{font-size:22px;color:#c83dff}
-.contact-card b{display:block;font:700 10px Orbitron,sans-serif;letter-spacing:1px;margin:9px 0 5px}
-.contact-card span,.contact-card a{font-size:15px;overflow-wrap:anywhere;color:#c8b6dd}
-.contact-card a:hover{color:#e29aff}
-footer{margin-top:25px;border-top:1px solid #4d1c71;padding:22px 0 30px;color:#9f8cb5;font-size:13px}
-.foot{display:flex;justify-content:space-between;gap:16px;align-items:center}
-.foot strong{font:800 17px Orbitron,sans-serif;color:#eee}
-.note{font-size:13px;color:#a995bd;margin-top:10px}
-.mobile-menu{display:none}
-
-@media(max-width:850px){
-.navlinks{gap:12px}
-.navlinks a{font-size:9px}
-.navicons{display:none}
-.hero{grid-template-columns:1fr;padding:45px 0 30px;gap:22px}
-.hero-art{min-height:190px}
-.stats-layout{grid-template-columns:1fr}
-.players{grid-template-columns:1fr}
-.tour-inner{grid-template-columns:1fr}
-.clan{grid-template-columns:1fr 1.5fr}
-.requirements{grid-column:1/-1;border-left:0;border-top:1px solid #54217b;padding:14px 0 0}
-.contact-grid{grid-template-columns:repeat(2,1fr)}
+:root {
+  --bg: #07060b;
+  --panel: #100d18;
+  --panel2: #171020;
+  --purple: #a855f7;
+  --violet: #7c3aed;
+  --pink: #d946ef;
+  --text: #faf7ff;
+  --muted: #b6a9c9;
+  --line: #38234d;
+  --glow: 0 12px 40px #0007;
 }
 
-@media(max-width:560px){
-.nav{height:auto;min-height:62px;align-items:flex-start;padding:16px 0;flex-wrap:wrap}
-.brand{font-size:18px}
-.navlinks{order:3;width:100%;justify-content:space-between;gap:5px}
-.navlinks a{font-size:8px;letter-spacing:.7px}
-.hero h1{letter-spacing:-2px}
-.tagline{letter-spacing:2px}
-.statgrid{grid-template-columns:repeat(2,1fr)}
-.player{grid-template-columns:90px 1fr;padding:12px;gap:12px}
-.player-art{min-height:165px;font-size:18px}
-.player h3{font-size:18px}
-.panel{padding:13px}
-.tour-inner{padding:17px}
-.clan{grid-template-columns:1fr}
-.requirements{grid-column:auto}
-.contact-grid{grid-template-columns:1fr 1fr}
-.contact-card{padding:12px}
-.foot{flex-direction:column;align-items:flex-start}
+* {
+  box-sizing: border-box;
 }
 
-.leaderboard-wrap{margin-top:16px;border:1px solid #682594;border-radius:8px;overflow:hidden;background:#0d0715;box-shadow:var(--glow)}
-.leaderboard-top{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:17px 18px;background:linear-gradient(100deg,#260b3e,#100819);border-bottom:1px solid #54217b}
-.leaderboard-top h3{font:800 16px Orbitron,sans-serif;margin:0}
-.demo-label{font:700 9px Orbitron,sans-serif;letter-spacing:1px;color:#e4baff;border:1px solid #8b36b9;padding:7px 9px;border-radius:4px}
-.table-scroll{overflow-x:auto}
-.leaderboard{width:100%;border-collapse:collapse;min-width:620px;text-align:left}
-.leaderboard th{font:700 10px Orbitron,sans-serif;letter-spacing:1px;color:#cda0ef;background:#150a20;padding:13px 15px}
-.leaderboard td{padding:13px 15px;border-top:1px solid #321644;font-weight:600}
-.leaderboard tbody tr:hover{background:#1a0c28}
-.leaderboard .rank{font:800 17px Orbitron,sans-serif;color:#d65cff}
-.leaderboard .empty{color:#9885aa;font-weight:500}
-.leaderboard-foot{padding:12px 16px;color:#a995bd;font-size:13px;border-top:1px solid #321644}
-@media(max-width:560px){
-.leaderboard-top{align-items:flex-start;flex-direction:column}
-.leaderboard-top h3{font-size:14px}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 82px;
 }
 
-/* ===== VXR SMOXY — ANIMATION UPGRADE ===== */
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: Rajdhani, Arial, sans-serif;
+  font-size: 18px;
+  background:
+    radial-gradient(ellipse at 50% -15%, #54208035, transparent 55%),
+    radial-gradient(ellipse at 100% 45%, #7625b015, transparent 35%),
+    var(--bg);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
 
-/* Glitch efekt hlavního nadpisu */
-.hero h1.vxr-glitch{
-  position:relative;
-  animation:vxr-title-glow 2.8s ease-in-out infinite;
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(#b477ff08 1px, transparent 1px),
+    linear-gradient(90deg, #b477ff08 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 85%);
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.wrap {
+  width: min(1180px, 92%);
+  margin: auto;
+}
+
+/* NAVIGACE */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #09070def;
+  border-bottom: 1px solid #8b5bb52b;
+  box-shadow: 0 8px 30px #0004;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.nav {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  font: 900 22px Orbitron, sans-serif;
+  letter-spacing: 0;
+  white-space: nowrap;
+  transition: filter .25s ease;
+}
+
+.brand:hover {
+  filter: drop-shadow(0 0 10px #b66aff99);
+}
+
+.brand span,
+.accent {
+  color: #c084fc;
+  text-shadow: 0 0 18px #a855f755;
+}
+
+.navlinks {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.navlinks a {
+  position: relative;
+  font: 600 11px Orbitron, sans-serif;
+  letter-spacing: 1.5px;
+  color: #d7c9e8;
+  transition: color .2s ease;
+}
+
+.navlinks a:hover {
+  color: #d8b4fe;
+}
+
+.navlinks a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -8px;
+  height: 2px;
+  background: #c084fc;
+  box-shadow: 0 0 12px #a855f7;
+  transition: right .25s ease;
+}
+
+.navlinks a:hover::after {
+  right: 0;
+}
+
+.navicons {
+  display: flex;
+  gap: 13px;
+  color: #bd49ff;
+  font: 700 17px Orbitron, sans-serif;
+}
+
+.navicons a {
+  transition: transform .2s ease, color .2s ease;
+}
+
+.navicons a:hover {
+  color: #e9d5ff;
+  transform: translateY(-2px);
+}
+
+/* HERO */
+
+.hero {
+  min-height: 520px;
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  align-items: center;
+  gap: 35px;
+  padding: 75px 0 70px;
+  position: relative;
+}
+
+.eyebrow {
+  font: 600 11px Orbitron, sans-serif;
+  letter-spacing: 4px;
+  color: #c084fc;
+}
+
+.hero h1 {
+  position: relative;
+  font: 900 clamp(42px, 7vw, 82px)/.98 Orbitron, sans-serif;
+  margin: 18px 0 14px;
+  letter-spacing: -4px;
+  text-shadow: 0 8px 35px #0008;
+}
+
+.hero h1 span {
+  color: #c084fc;
+}
+
+.tagline {
+  letter-spacing: 5px;
+  font: 600 12px Orbitron, sans-serif;
+  color: #d8cde7;
+}
+
+.pills {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin: 23px 0;
+}
+
+.pill {
+  border: 1px solid #61417c80;
+  padding: 6px 11px;
+  border-radius: 4px;
+  font: 600 10px Orbitron, sans-serif;
+  letter-spacing: 1px;
+  background: #130d1d;
+  transition:
+    background .25s ease,
+    border-color .25s ease,
+    transform .25s ease;
+}
+
+.pill:hover {
+  background: #241333;
+  border-color: #bd8af5;
+  transform: translateY(-2px);
+}
+
+/* TLAČÍTKA */
+
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(110deg, #7132bd, #9b4bd2);
+  color: white;
+  padding: 13px 20px;
+  border: 1px solid #b784ed;
+  border-radius: 4px;
+  font: 700 11px Orbitron, sans-serif;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 20px #7c3aed22;
+  transition:
+    transform .25s ease,
+    filter .25s ease,
+    box-shadow .25s ease;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -50%;
+  bottom: -50%;
+  left: -75%;
+  width: 45%;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #ffffff45,
+    #e6b5ff80,
+    transparent
+  );
+  transform: skewX(-22deg);
+  transition: left .65s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.13);
+  box-shadow: 0 8px 28px #a855f744;
+}
+
+.btn:hover::after {
+  left: 140%;
+}
+
+/* HERO GRAFIKA */
+
+.hero-art {
+  min-height: 280px;
+  border: 1px solid #9b65c955;
+  border-radius: 10px;
+  background:
+    radial-gradient(ellipse at 50% 45%, #7c3aed24, transparent 60%),
+    linear-gradient(145deg, #171020, #09070e 75%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 50px #a855f70a,
+    0 20px 60px #0006;
+  animation: vxr-art-glow 3.5s ease-in-out infinite;
+}
+
+.hero-art::before,
+.hero-art::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #c084fc35;
+  transform: rotate(35deg);
+  box-shadow: 0 0 60px #8d00ff22;
+}
+
+.hero-art::after {
+  width: 210px;
+  height: 210px;
+  transform: rotate(55deg);
+}
+
+.sigil {
+  z-index: 1;
+  text-align: center;
+  font: 900 clamp(55px, 8vw, 100px) Orbitron, sans-serif;
+  color: #e9d5ff;
+  text-shadow:
+    0 0 12px #a855f7aa,
+    0 0 45px #7c3aed55;
+  transform: skew(-8deg);
+}
+
+.sigil small {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: #eee3ff;
+  margin-top: 10px;
+}
+
+/* GLITCH NADPISU */
+
+.hero h1.vxr-glitch {
+  animation: vxr-title-glow 2.8s ease-in-out infinite;
 }
 
 .hero h1.vxr-glitch::before,
-.hero h1.vxr-glitch::after{
-  content:attr(data-text);
-  position:absolute;
-  inset:0;
-  width:100%;
-  pointer-events:none;
-  overflow:hidden;
-  opacity:0;
+.hero h1.vxr-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
 }
 
-.hero h1.vxr-glitch::before{
-  color:#e02cff;
-  text-shadow:-3px 0 #7c2bff;
-  animation:vxr-glitch-a 5s infinite steps(1,end);
+.hero h1.vxr-glitch::before {
+  color: #e02cff;
+  text-shadow: -3px 0 #7c2bff;
+  animation: vxr-glitch-a 5s infinite steps(1, end);
 }
 
-.hero h1.vxr-glitch::after{
-  color:#d7a0ff;
-  text-shadow:3px 0 #a100ff;
-  animation:vxr-glitch-b 5s infinite steps(1,end);
+.hero h1.vxr-glitch::after {
+  color: #d7a0ff;
+  text-shadow: 3px 0 #a100ff;
+  animation: vxr-glitch-b 5s infinite steps(1, end);
 }
 
-@keyframes vxr-title-glow{
-  0%,100%{filter:drop-shadow(0 0 5px #a100ff44)}
-  50%{filter:drop-shadow(0 0 16px #a100ffbb)}
+@keyframes vxr-title-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px #a100ff44);
+  }
+  50% {
+    filter: drop-shadow(0 0 16px #a100ffbb);
+  }
 }
 
-@keyframes vxr-glitch-a{
-  0%,88%,100%{opacity:0;clip-path:inset(0 0 0 0);transform:translateX(0)}
-  89%{opacity:.8;clip-path:inset(10% 0 72% 0);transform:translateX(-4px)}
-  91%{opacity:.65;clip-path:inset(55% 0 25% 0);transform:translateX(3px)}
-  93%{opacity:0}
+@keyframes vxr-glitch-a {
+  0%, 88%, 100% {
+    opacity: 0;
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+  89% {
+    opacity: .8;
+    clip-path: inset(10% 0 72% 0);
+    transform: translateX(-4px);
+  }
+  91% {
+    opacity: .65;
+    clip-path: inset(55% 0 25% 0);
+    transform: translateX(3px);
+  }
+  93% {
+    opacity: 0;
+  }
 }
 
-@keyframes vxr-glitch-b{
-  0%,90%,100%{opacity:0;clip-path:inset(0 0 0 0);transform:translateX(0)}
-  91%{opacity:.75;clip-path:inset(65% 0 12% 0);transform:translateX(4px)}
-  93%{opacity:.65;clip-path:inset(25% 0 58% 0);transform:translateX(-3px)}
-  95%{opacity:0}
+@keyframes vxr-glitch-b {
+  0%, 90%, 100% {
+    opacity: 0;
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+  91% {
+    opacity: .75;
+    clip-path: inset(65% 0 12% 0);
+    transform: translateX(4px);
+  }
+  93% {
+    opacity: .65;
+    clip-path: inset(25% 0 58% 0);
+    transform: translateX(-3px);
+  }
+  95% {
+    opacity: 0;
+  }
 }
 
-/* Pulzující fialové neonové světlo */
-.hero-art{
-  animation:vxr-art-glow 3.5s ease-in-out infinite;
+@keyframes vxr-art-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px #9500ff22, 0 0 26px #9500ff22;
+    border-color: #6324a0;
+  }
+  50% {
+    box-shadow: 0 0 25px #9500ff44, 0 0 48px #9500ff22;
+    border-color: #a84bff;
+  }
 }
 
-@keyframes vxr-art-glow{
-  0%,100%{box-shadow:0 0 15px #9500ff22,0 0 26px #9500ff22;border-color:#6324a0}
-  50%{box-shadow:0 0 25px #9500ff66,0 0 48px #9500ff33;border-color:#a84bff}
+/* SEKCE */
+
+.section {
+  padding: 35px 0 12px;
 }
 
-/* Hover efekty na statistikách, hráčích a kartách */
-.stat,.player,.contact-card,.mini-box{
-  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease,background .28s ease;
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  margin-bottom: 22px;
 }
 
-.stat:hover{
-  transform:translateY(-5px) scale(1.025);
-  border-color:#c03bff;
-  box-shadow:0 0 20px #a100ff55;
-  background:linear-gradient(150deg,#251039,#100719);
+.section-index {
+  font: 600 11px Orbitron, sans-serif;
+  letter-spacing: 2px;
+  color: #c084fc;
 }
 
-.stat:hover .number{
-  color:#dba0ff;
-  text-shadow:0 0 15px #a100ff88;
+.section h2 {
+  font: 800 clamp(22px, 3.3vw, 34px) Orbitron, sans-serif;
+  margin: 5px 0 0;
+  letter-spacing: -1px;
 }
 
-.player:hover{
-  transform:translateY(-4px);
-  border-color:#a100ff;
-  box-shadow:0 0 24px #9500ff44;
+.sub {
+  color: var(--muted);
+  margin: 5px 0 0;
+  line-height: 1.5;
 }
 
-.player:hover .player-art{
-  text-shadow:0 0 30px #d04cff;
+/* PANELY */
+
+.panel {
+  background: linear-gradient(145deg, #15101e, #0c0912 80%);
+  border: 1px solid #48315d;
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 15px 40px #0003;
+  transition: border-color .25s ease, box-shadow .25s ease;
 }
 
-.contact-card:hover,.mini-box:hover{
-  border-color:#a100ff;
-  box-shadow:0 0 18px #9500ff33;
+.panel:hover {
+  border-color: #7952a0;
+  box-shadow: 0 18px 45px #0005;
 }
 
-.leaderboard tbody tr{
-  transition:background .25s ease,color .25s ease;
+/* STATISTIKY */
+
+.stats-layout {
+  display: grid;
+  grid-template-columns: 1.3fr .8fr;
+  gap: 14px;
 }
 
-/* Silnější glow tlačítek */
-.btn{
-  position:relative;
-  isolation:isolate;
-  overflow:hidden;
-  transition:transform .25s ease,filter .25s ease,box-shadow .25s ease,border-color .25s ease;
+.statgrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 15px;
 }
 
-.btn:hover{
-  transform:translateY(-3px);
-  filter:brightness(1.2);
-  border-color:#f0c5ff;
-  box-shadow:0 0 18px #a100ff88,0 0 38px #9500ff44;
+.stat {
+  border: 1px solid #49305f;
+  border-radius: 6px;
+  padding: 14px 7px;
+  text-align: center;
+  background: linear-gradient(145deg, #1a1225, #0c0912);
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
 }
 
-/* Světelný proužek přes tlačítko */
-.btn::after{
-  content:"";
-  position:absolute;
-  z-index:1;
-  top:-50%;
-  bottom:-50%;
-  left:-75%;
-  width:45%;
-  pointer-events:none;
-  background:linear-gradient(90deg,transparent,#ffffff66,#e6b5ff99,transparent);
-  transform:skewX(-22deg);
-  transition:left .65s ease;
+.stat:hover {
+  transform: translateY(-4px);
+  border-color: #b784ed;
+  background: linear-gradient(145deg, #261637, #100b17);
+  box-shadow: 0 10px 25px #0005, 0 0 20px #a855f718;
 }
 
-.btn:hover::after{
-  left:140%;
+.stat .number {
+  display: block;
+  font: 800 clamp(19px, 2.4vw, 27px) Orbitron, sans-serif;
+  margin: 7px 0 4px;
+  letter-spacing: -1px;
+  transition: color .25s ease, text-shadow .25s ease;
 }
 
-/* Sekce se postupně objeví při scrollování */
-main>section.vxr-reveal{
-  opacity:0;
-  transform:translateY(24px);
-  transition:opacity .7s ease,transform .7s ease;
+.stat:hover .number {
+  color: #e9d5ff;
+  text-shadow: 0 0 15px #a100ff55;
 }
 
-main>section.vxr-reveal.vxr-visible{
-  opacity:1;
-  transform:translateY(0);
+.stat .label {
+  font: 600 9px Orbitron, sans-serif;
+  letter-spacing: 1.3px;
+  color: #c9b7df;
 }
 
-/* Respektování nastavení omezení animací */
-@media(prefers-reduced-motion:reduce){
-  .hero h1.vxr-glitch,.hero-art{
-    animation:none!important;
+.ico {
+  color: #c084fc;
+  font-size: 19px;
+}
+
+.prbig {
+  font: 900 35px Orbitron, sans-serif;
+  color: #d8b4fe;
+  text-shadow: 0 0 24px #a855f733;
+  margin: 8px 0;
+}
+
+.bar {
+  height: 10px;
+  border: 1px solid #51366a;
+  border-radius: 9px;
+  overflow: hidden;
+  margin: 13px 0;
+  background: #09070d;
+}
+
+.bar span {
+  display: block;
+  width: 76%;
+  height: 100%;
+  background: linear-gradient(90deg, #7c3aed, #c084fc);
+  box-shadow: 0 0 15px #a855f755;
+}
+
+.split {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.mini-box {
+  border: 1px solid #49305f;
+  background: #0b0811;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 13px;
+  font-size: 15px;
+  transition: border-color .25s ease, background .25s ease;
+}
+
+.mini-box:hover {
+  border-color: #a855f7;
+  background: #130d1d;
+}
+
+.mini-box strong {
+  color: #d8b4fe;
+}
+
+/* HRÁČSKÉ KARTY */
+
+.players {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.player {
+  display: grid;
+  grid-template-columns: .65fr 1fr;
+  gap: 15px;
+  align-items: center;
+  min-height: 245px;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+}
+
+.player:hover {
+  transform: translateY(-4px);
+  border-color: #a855f7;
+  box-shadow: 0 12px 30px #0005;
+}
+
+.player-art {
+  position: relative;
+  height: 100%;
+  min-height: 205px;
+  overflow: hidden;
+  border: 1px solid #5a3977;
+  border-radius: 5px;
+  background:
+    radial-gradient(circle at 50% 40%, #7739a5 0, #281438 35%, #0b0811 78%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 900 28px Orbitron, sans-serif;
+  color: #f3e8ff;
+  text-shadow: 0 0 20px #a100ff;
+  transition: filter .3s ease, border-color .3s ease;
+}
+
+.player-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, transparent 30%, #ffffff08 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform .6s ease;
+}
+
+.player:hover .player-art::after {
+  transform: translateX(100%);
+}
+
+.player:hover .player-art {
+  border-color: #bd8af5;
+  filter: brightness(1.1);
+}
+
+.player h3 {
+  font: 800 23px Orbitron, sans-serif;
+  margin: 0 0 6px;
+  letter-spacing: -.5px;
+}
+
+.player .role {
+  font: 600 10px Orbitron, sans-serif;
+  letter-spacing: 2px;
+  color: #c4b0d8;
+}
+
+.playerlinks {
+  display: grid;
+  gap: 7px;
+  margin: 14px 0;
+  color: #dfd1ee;
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+
+.playerlinks a {
+  transition: color .2s ease;
+}
+
+.playerlinks a:hover {
+  color: #d8b4fe;
+}
+
+/* TURNAJ */
+
+.tournament {
+  margin-top: 24px;
+  border: 1px solid #75499a;
+  border-radius: 9px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 100% 0%, #7625b01c, transparent 55%),
+    linear-gradient(120deg, #171020, #0b0810 65%, #160c20);
+  box-shadow: 0 18px 50px #0004;
+  position: relative;
+}
+
+.tournament::before {
+  content: "";
+  position: absolute;
+  right: -55px;
+  top: -130px;
+  width: 420px;
+  height: 420px;
+  border: 1px solid #c084fc25;
+  transform: rotate(42deg);
+  box-shadow: 0 0 0 35px #8d29c611, 0 0 0 70px #8d29c609;
+  pointer-events: none;
+}
+
+.tour-inner {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 22px;
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.coming {
+  display: inline-block;
+  border: 1px solid #9063b5;
+  color: #e9d5ff;
+  background: #21132c80;
+  padding: 7px 11px;
+  font: 700 10px Orbitron, sans-serif;
+  letter-spacing: 1px;
+  border-radius: 4px;
+}
+
+.tour-title {
+  font: 900 clamp(28px, 4.5vw, 48px)/1.1 Orbitron, sans-serif;
+  margin: 15px 0 10px;
+}
+
+.tour-title span {
+  color: #d8b4fe;
+}
+
+.tour-meta {
+  font: 600 10px Orbitron, sans-serif;
+  letter-spacing: 2px;
+  color: #c9b5dd;
+}
+
+.tour-info {
+  display: grid;
+  gap: 0;
+  border: 1px solid #5e2787;
+  border-radius: 6px;
+  background: #0a0613e8;
+  padding: 10px 15px;
+  align-self: center;
+}
+
+.tour-row {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid #3a1a52;
+}
+
+.tour-row:last-child {
+  border: 0;
+}
+
+.tour-row b {
+  display: block;
+  font: 700 10px Orbitron, sans-serif;
+  color: #d8b4fe;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.tour-row span {
+  font-size: 16px;
+}
+
+.note {
+  font-size: 13px;
+  color: #a995bd;
+  margin-top: 10px;
+}
+
+/* LEADERBOARD */
+
+.leaderboard-wrap {
+  margin-top: 16px;
+  border: 1px solid #49305f;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0d0913;
+  box-shadow: 0 15px 40px #0003;
+}
+
+.leaderboard-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 17px 18px;
+  background: linear-gradient(100deg, #20132e, #100b17);
+  border-bottom: 1px solid #49305f;
+}
+
+.leaderboard-top h3 {
+  font: 800 16px Orbitron, sans-serif;
+  margin: 0;
+}
+
+.demo-label {
+  font: 700 9px Orbitron, sans-serif;
+  letter-spacing: 1px;
+  color: #e9d5ff;
+  border: 1px solid #77558e;
+  padding: 7px 9px;
+  border-radius: 4px;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.leaderboard {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 620px;
+  text-align: left;
+}
+
+.leaderboard th {
+  font: 700 10px Orbitron, sans-serif;
+  letter-spacing: 1px;
+  color: #d8b4fe;
+  background: #171020;
+  padding: 13px 15px;
+}
+
+.leaderboard td {
+  padding: 13px 15px;
+  border-top: 1px solid #33223f;
+  font-weight: 600;
+}
+
+.leaderboard tbody tr {
+  transition: background .25s ease, color .25s ease;
+}
+
+.leaderboard tbody tr:hover {
+  background: #21152e;
+}
+
+.leaderboard .rank {
+  font: 800 17px Orbitron, sans-serif;
+  color: #d8b4fe;
+}
+
+.leaderboard .empty {
+  color: #9885aa;
+  font-weight: 500;
+}
+
+.leaderboard-foot {
+  padding: 12px 16px;
+  color: #a995bd;
+  font-size: 13px;
+  border-top: 1px solid #33223f;
+}
+
+/* CLAN */
+
+.clan {
+  display: grid;
+  grid-template-columns: .7fr 1.4fr 1fr;
+  gap: 22px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.clan-logo {
+  font: 900 clamp(30px, 4vw, 45px) Orbitron, sans-serif;
+  color: #e9d5ff;
+  text-shadow: 0 0 22px #a855f733;
+}
+
+.clan h3 {
+  font: 800 17px Orbitron, sans-serif;
+  margin: 0 0 8px;
+}
+
+.requirements {
+  border-left: 1px solid #49305f;
+  padding-left: 20px;
+  color: #d9c9e8;
+  font-size: 15px;
+}
+
+.requirements div {
+  margin: 4px 0;
+}
+
+.requirements div::before {
+  content: "✓";
+  color: #c084fc;
+  margin-right: 8px;
+}
+
+/* KONTAKT */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.contact-card {
+  border: 1px solid #49305f;
+  border-radius: 7px;
+  padding: 15px;
+  background: linear-gradient(145deg, #15101e, #0c0912);
+  min-width: 0;
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  border-color: #a855f7;
+  box-shadow: 0 12px 30px #0005;
+}
+
+.contact-card .c-icon {
+  font-size: 22px;
+  color: #c084fc;
+}
+
+.contact-card b {
+  display: block;
+  font: 700 10px Orbitron, sans-serif;
+  letter-spacing: 1.2px;
+  margin: 9px 0 5px;
+}
+
+.contact-card span,
+.contact-card a {
+  font-size: 15px;
+  overflow-wrap: anywhere;
+  color: #c8b6dd;
+}
+
+.contact-card a:hover {
+  color: #e9d5ff;
+}
+
+/* FOOTER */
+
+footer {
+  margin-top: 25px;
+  border-top: 1px solid #49305f;
+  padding: 22px 0 30px;
+  color: #9f8cb5;
+  font-size: 13px;
+  background: #08060b55;
+}
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+
+.foot strong {
+  font: 800 17px Orbitron, sans-serif;
+  color: #eee;
+}
+
+/* SCROLL REVEAL */
+
+main > section.vxr-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity .65s ease,
+    transform .65s cubic-bezier(.2,.7,.2,1);
+}
+
+main > section.vxr-reveal.vxr-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONZIVNÍ DESIGN */
+
+@media (max-width: 850px) {
+  .navlinks {
+    gap: 12px;
   }
 
-  .hero h1.vxr-glitch::before,.hero h1.vxr-glitch::after{
-    animation:none!important;
-    display:none;
+  .navlinks a {
+    font-size: 9px;
   }
 
-  main>section.vxr-reveal{
-    opacity:1;
-    transform:none;
-    transition:none;
+  .navicons {
+    display: none;
   }
 
-  .stat,.player,.contact-card,.mini-box,.btn{
-    transition:none;
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 45px 0 38px;
+    gap: 22px;
   }
 
-  .btn::after{
-    display:none;
+  .hero-art {
+    min-height: 220px;
+  }
+
+  .stats-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .players {
+    grid-template-columns: 1fr;
+  }
+
+  .tour-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .clan {
+    grid-template-columns: 1fr 1.5fr;
+  }
+
+  .requirements {
+    grid-column: 1 / -1;
+    border-left: 0;
+    border-top: 1px solid #49305f;
+    padding: 14px 0 0;
+  }
+
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .nav {
+    min-height: 62px;
+    align-items: flex-start;
+    padding: 16px 0;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  .navlinks {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    gap: 5px;
+  }
+
+  .navlinks a {
+    font-size: 8px;
+    letter-spacing: .7px;
+  }
+
+  .hero {
+    padding-top: 48px;
+    padding-bottom: 38px;
+  }
+
+  .hero h1 {
+    letter-spacing: -2px;
+  }
+
+  .tagline {
+    letter-spacing: 2px;
+  }
+
+  .statgrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .player {
+    grid-template-columns: 90px 1fr;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .player-art {
+    min-height: 165px;
+    font-size: 18px;
+  }
+
+  .player h3 {
+    font-size: 18px;
+  }
+
+  .panel {
+    padding: 13px;
+  }
+
+  .tour-inner {
+    padding: 17px;
+  }
+
+  .clan {
+    grid-template-columns: 1fr;
+  }
+
+  .requirements {
+    grid-column: auto;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .contact-card {
+    padding: 12px;
+  }
+
+  .foot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .leaderboard-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .leaderboard-top h3 {
+    font-size: 14px;
+  }
+
+  .split {
+    flex-wrap: wrap;
+  }
+}
+
+/* OMEZENÍ POHYBU PRO PŘÍSTUPNOST */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  main > section.vxr-reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero h1.vxr-glitch::before,
+  .hero h1.vxr-glitch::after {
+    display: none;
   }
 }
 </style>
 </head>
 
 <body>
+
 <header class="topbar">
-<div class="wrap nav">
-<a class="brand" href="#home"><span>VXR</span> SMOXY</a>
-<nav class="navlinks">
-<a href="#home">HOME</a>
-<a href="#stats">STATS</a>
-<a href="#players">PLAYERS</a>
-<a href="#tournament">TOURNAMENT</a>
-<a href="#clan">CLAN</a>
-<a href="#contact">CONTACT</a>
-</nav>
-<div class="navicons">
-<a href="https://discord.gg/9pXXYwpWm" aria-label="Discord">◉</a>
-<a href="https://www.instagram.com/susage.eo/" aria-label="Instagram">◎</a>
-<a href="https://fortnitetracker.com/fortnite/profile/epic/VXR%20Smoxy%E3%83%84/epic-events/overview" aria-label="Fortnite Tracker">F</a>
-</div>
-</div>
+  <div class="wrap nav">
+    <a class="brand" href="#home"><span>VXR</span> SMOXY</a>
+
+    <nav class="navlinks">
+      <a href="#home">HOME</a>
+      <a href="#stats">STATS</a>
+      <a href="#players">PLAYERS</a>
+      <a href="#tournament">TOURNAMENT</a>
+      <a href="#clan">CLAN</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+
+    <div class="navicons">
+      <a href="https://discord.gg/9pXXYwpWm" aria-label="Discord">◉</a>
+      <a href="https://www.instagram.com/susage.eo/" aria-label="Instagram">◎</a>
+      <a href="https://fortnitetracker.com/fortnite/profile/epic/VXR%20Smoxy%E3%83%84/epic-events/overview" aria-label="Fortnite Tracker">F</a>
+    </div>
+  </div>
 </header>
 
 <main>
+
+<!-- HOME -->
+
 <section class="wrap hero" id="home">
-<div>
-<div class="eyebrow">FORTNITE COMPETITIVE PLAYER</div>
-<h1><span>VXR</span> SMOXY</h1>
-<div class="tagline">NO LIMITS. JUST PLAY.</div>
-<div class="pills">
-<span class="pill">♜ EU</span>
-<span class="pill">◈ ZERO BUILD</span>
-<span class="pill">♧ CONSOLE</span>
-<span class="pill">✦ VXR CLAN</span>
-</div>
-<a class="btn" href="#stats">VIEW MY STATS <span>→</span></a>
-</div>
-<div class="hero-art">
-<div class="sigil">VXR<small>COMPETE • IMPROVE • WIN</small></div>
-</div>
+  <div>
+    <div class="eyebrow">FORTNITE COMPETITIVE PLAYER</div>
+
+    <h1><span>VXR</span> SMOXY</h1>
+
+    <div class="tagline">NO LIMITS. JUST PLAY.</div>
+
+    <div class="pills">
+      <span class="pill">♜ EU</span>
+      <span class="pill">◈ ZERO BUILD</span>
+      <span class="pill">♧ CONSOLE</span>
+      <span class="pill">✦ VXR CLAN</span>
+    </div>
+
+    <a class="btn" href="#stats">VIEW MY STATS <span>→</span></a>
+  </div>
+
+  <div class="hero-art">
+    <div class="sigil">VXR<small>COMPETE • IMPROVE • WIN</small></div>
+  </div>
 </section>
+
+<!-- STATS -->
 
 <section class="wrap section" id="stats">
-<div class="section-head">
-<div>
-<div class="section-index">01 // PLAYER STATS</div>
-<h2>FORTNITE <span class="accent">STATS</span></h2>
-<p class="sub">My current stats, PR and competitive progress.</p>
-</div>
-</div>
+  <div class="section-head">
+    <div>
+      <div class="section-index">01 // PLAYER STATS</div>
+      <h2>FORTNITE <span class="accent">STATS</span></h2>
+      <p class="sub">My current stats, PR and competitive progress.</p>
+    </div>
+  </div>
 
-<div class="stats-layout">
-<div class="panel">
-<div class="statgrid">
-<div class="stat"><span class="ico">♜</span><span class="number">428</span><span class="label">WINS</span></div>
-<div class="stat"><span class="ico">％</span><span class="number">6.20%</span><span class="label">WIN RATE</span></div>
-<div class="stat"><span class="ico">⌖</span><span class="number">16,348</span><span class="label">KILLS</span></div>
-<div class="stat"><span class="ico">▥</span><span class="number">2.52</span><span class="label">K/D RATIO</span></div>
-<div class="stat"><span class="ico">♢</span><span class="number">19</span><span class="label">CURRENT PR</span></div>
-<div class="stat"><span class="ico">♛</span><span class="number">UNREAL</span><span class="label">BEST RANK</span></div>
-<div class="stat"><span class="ico">▣</span><span class="number">60 FPS</span><span class="label">PLATFORM</span></div>
-<div class="stat"><span class="ico">◈</span><span class="number">ZERO BUILD</span><span class="label">MAIN MODE</span></div>
-</div>
-</div>
+  <div class="stats-layout">
+    <div class="panel">
+      <div class="statgrid">
+        <div class="stat"><span class="ico">♜</span><span class="number">428</span><span class="label">WINS</span></div>
+        <div class="stat"><span class="ico">％</span><span class="number">6.20%</span><span class="label">WIN RATE</span></div>
+        <div class="stat"><span class="ico">⌖</span><span class="number">16,348</span><span class="label">KILLS</span></div>
+        <div class="stat"><span class="ico">▥</span><span class="number">2.52</span><span class="label">K/D RATIO</span></div>
+        <div class="stat"><span class="ico">♢</span><span class="number">19</span><span class="label">CURRENT PR</span></div>
+        <div class="stat"><span class="ico">♛</span><span class="number">UNREAL</span><span class="label">BEST RANK</span></div>
+        <div class="stat"><span class="ico">▣</span><span class="number">60 FPS</span><span class="label">PLATFORM</span></div>
+        <div class="stat"><span class="ico">◈</span><span class="number">ZERO BUILD</span><span class="label">MAIN MODE</span></div>
+      </div>
+    </div>
 
-<div class="panel">
-<div class="section-index">POWER RANKING // 2026</div>
-<div class="prbig">♛ 19 PR</div>
-<div class="bar"><span></span></div>
-<div class="split"><span>FIRST PR: <b>4.9</b></span><span>CURRENT PR: <b>19</b></span></div>
-<div class="mini-box">
-<strong>FIRST COMPETITIVE PR</strong><br>
-1. 8. 2026 — Console Duos ZB Cash Cup<br><br>
-Placement: <b>#5,096</b> &nbsp; • &nbsp; PR: <b>4.9</b>
-</div>
-<p class="sub">From the first PR to the current 19. The grind continues.</p>
-<a href="https://fortnitetracker.com/fortnite/profile/epic/VXR%20Smoxy%E3%83%84/epic-events/overview" target="_blank" rel="noopener" class="btn">OPEN FORTNITE TRACKER ↗</a>
-</div>
-</div>
+    <div class="panel">
+      <div class="section-index">POWER RANKING // 2026</div>
+      <div class="prbig">♛ 19 PR</div>
+      <div class="bar"><span></span></div>
+
+      <div class="split">
+        <span>FIRST PR: <b>4.9</b></span>
+        <span>CURRENT PR: <b>19</b></span>
+      </div>
+
+      <div class="mini-box">
+        <strong>FIRST COMPETITIVE PR</strong><br>
+        1. 8. 2026 — Console Duos ZB Cash Cup<br><br>
+        Placement: <b>#5,096</b> &nbsp; • &nbsp; PR: <b>4.9</b>
+      </div>
+
+      <p class="sub">From the first PR to the current 19. The grind continues.</p>
+
+      <a href="https://fortnitetracker.com/fortnite/profile/epic/VXR%20Smoxy%E3%83%84/epic-events/overview" target="_blank" rel="noopener" class="btn">OPEN FORTNITE TRACKER ↗</a>
+    </div>
+  </div>
 </section>
+
+<!-- PLAYERS -->
 
 <section class="wrap section" id="players">
-<div class="section-head">
-<div>
-<div class="section-index">02 // THE PLAYERS</div>
-<h2>MEET THE <span class="accent">TEAM</span></h2>
-</div>
-</div>
+  <div class="section-head">
+    <div>
+      <div class="section-index">02 // THE PLAYERS</div>
+      <h2>MEET THE <span class="accent">TEAM</span></h2>
+    </div>
+  </div>
 
-<div class="players">
-<article class="panel player">
-<div class="player-art">SMOXY</div>
-<div>
-<h3>VXR <span class="accent">SMOXY</span></h3>
-<div class="role">PLAYER / FORTNITE</div>
-<div class="pills">
-<span class="pill">EU</span>
-<span class="pill">ZERO BUILD</span>
-<span class="pill">CONSOLE</span>
-<span class="pill">VXR</span>
-</div>
-<div class="playerlinks">
-<a href="https://www.instagram.com/susage.eo/" target="_blank" rel="noopener">◎ &nbsp; @susage.eo</a>
-<a href="https://discord.gg/9pXXYwpWm" target="_blank" rel="noopener">◉ &nbsp; VXR SMOXY • Discord Server</a>
-<a href="mailto:tomaseksus5@gmail.com">✉ &nbsp; tomaseksus5@gmail.com</a>
-<a href="https://fortnitetracker.com/fortnite/profile/epic/VXR%20Smoxy%E3%83%84/epic-events/overview" target="_blank" rel="noopener">↗ &nbsp; Fortnite Tracker</a>
-</div>
-<a class="btn" href="https://www.instagram.com/susage.eo/" target="_blank" rel="noopener">FOLLOW / JOIN →</a>
-</div>
-</article>
+  <div class="players">
 
-<article class="panel player">
-<div class="player-art">ZEROX</div>
-<div>
-<h3>VXR <span class="accent">ZEROX</span></h3>
-<div class="role">DUO / SUPPORT</div>
-<div class="pills">
-<span class="pill">EU</span>
-<span class="pill">ZERO BUILD</span>
-<span class="pill">CONSOLE</span>
-<span class="pill">VXR</span>
-</div>
-<div class="playerlinks">
-<a href="https://www.instagram.com/kristof__tt/" target="_blank" rel="noopener">◎ &nbsp; @kristof__tt</a>
-<a href="mailto:Kristof.tomas19@gmail.com">✉ &nbsp; Kristof.tomas19@gmail.com</a>
-<span>♜ &nbsp; 210 Wins • 8,975 Kills</span>
-<span>◈ &nbsp; 2.54 K/D • 5.60% Win Rate</span>
-</div>
-<a class="btn" href="https://www.instagram.com/kristof__tt/" target="_blank" rel="noopener">FOLLOW ZEROX →</a>
-</div>
-</article>
-</div>
+    <article class="panel player">
+      <div class="player-art">SMOXY</div>
+
+      <div>
+        <h3>VXR <span class="accent">SMOXY</span></h3>
+        <div class="role">PLAYER / FORTNITE</div>
+
+        <div class="pills">
+          <span class="pill">EU</span>
+          <span class="pill">ZERO BUILD</span>
+          <span class="pill">CONSOLE</span>
+          <span class="pill">VXR</span>
+        </div>
+
+        <div class="playerlinks">
+          <a href="https://www.instagram.com/susage.eo/" target="_blank" rel="noopener">◎ &nbsp; @susage.eo</a>
+          <a href="https://discord.gg/9pXXYwpWm" target="_blank" rel="noopener">◉ &nbsp; VXR SMOXY • Discord Server</a>
+          <a href="mailto:tomaseksus5@gmail.com">✉ &nbsp; tomaseksus5@gmail.com</a>
+          <a href="https://fortnitetracker.com/fortnite/profile/epic/VXR%20Smoxy%E3%83%84/epic-events/overview" target="_blank" rel="noopener">↗ &nbsp; Fortnite Tracker</a>
+        </div>
+
+        <a class="btn" href="https://www.instagram.com/susage.eo/" target="_blank" rel="noopener">FOLLOW / JOIN →</a>
+      </div>
+    </article>
+
+    <article class="panel player">
+      <div class="player-art">ZEROX</div>
+
+      <div>
+        <h3>VXR <span class="accent">ZEROX</span></h3>
+        <div class="role">DUO / SUPPORT</div>
+
+        <div class="pills">
+          <span class="pill">EU</span>
+          <span class="pill">ZERO BUILD</span>
+          <span class="pill">CONSOLE</span>
+          <span class="pill">VXR</span>
+        </div>
+
+        <div class="playerlinks">
+          <a href="https://www.instagram.com/kristof__tt/" target="_blank" rel="noopener">◎ &nbsp; @kristof__tt</a>
+          <a href="mailto:Kristof.tomas19@gmail.com">✉ &nbsp; Kristof.tomas19@gmail.com</a>
+          <span>♜ &nbsp; 210 Wins • 8,975 Kills</span>
+          <span>◈ &nbsp; 2.54 K/D • 5.60% Win Rate</span>
+        </div>
+
+        <a class="btn" href="https://www.instagram.com/kristof__tt/" target="_blank" rel="noopener">FOLLOW ZEROX →</a>
+      </div>
+    </article>
+
+  </div>
 </section>
+
+<!-- TOURNAMENT -->
 
 <section class="wrap section" id="tournament">
-<div class="section-head">
-<div>
-<div class="section-index">03 // VXR TOURNAMENT</div>
-<h2>THE NEXT LEVEL</h2>
-</div>
-<span class="coming">♛ COMING SOON</span>
-</div>
+  <div class="section-head">
+    <div>
+      <div class="section-index">03 // VXR TOURNAMENT</div>
+      <h2>THE NEXT LEVEL</h2>
+    </div>
 
-<div class="tournament">
-<div class="tour-inner">
-<div>
-<div class="tour-meta">VXR ESPORTS PRESENTS</div>
-<div class="tour-title">VXR <span>SOLO CASH CUP</span></div>
-<div class="tour-meta">SOLO BUILDS &nbsp; • &nbsp; CASH PRIZE &nbsp; • &nbsp; EU</div>
-<p>Our first official VXR tournament. Solo Builds, cash prizes and a chance to prove yourself. The event will be commentated live by VXR SMOXY and VXR ZEROX.</p>
-<p class="sub">More details, rules and registration will be announced soon.</p>
-<a class="btn" href="https://discord.gg/9pXXYwpWm" target="_blank" rel="noopener">STAY TUNED ON DISCORD →</a>
-</div>
+    <span class="coming">♛ COMING SOON</span>
+  </div>
 
-<div class="tour-info">
-<div class="tour-row"><span class="ico">♧</span><div><b>MODE</b><span>Solo Builds</span></div></div>
-<div class="tour-row"><span class="ico">◉</span><div><b>COMMENTATORS</b><span>SMOXY + ZEROX</span></div></div>
-<div class="tour-row"><span class="ico">♜</span><div><b>PRIZE POOL</b><span>To be announced</span></div></div>
-<div class="tour-row"><span class="ico">◷</span><div><b>DATE & REGISTRATION</b><span>Coming soon</span></div></div>
-</div>
-</div>
-</div>
+  <div class="tournament">
+    <div class="tour-inner">
 
-<p class="note">Tournament date, eligibility, rules, prize details and registration will be published before the event opens.</p>
+      <div>
+        <div class="tour-meta">VXR ESPORTS PRESENTS</div>
 
-<div class="leaderboard-wrap">
-<div class="leaderboard-top">
-<h3>VXR SOLO CASH CUP // LEADERBOARD</h3>
-<span class="demo-label">PREVIEW • NOT LIVE RESULTS</span>
-</div>
+        <div class="tour-title">VXR <span>SOLO CASH CUP</span></div>
 
-<div class="table-scroll">
-<table class="leaderboard" aria-label="Ukázková turnajová tabulka">
-<thead>
-<tr><th>#</th><th>PLAYER</th><th>ELIMS</th><th>PLACEMENT</th><th>POINTS</th></tr>
-</thead>
-<tbody>
-<tr><td class="rank">—</td><td>To be announced</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td></tr>
-<tr><td class="rank">—</td><td>To be announced</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td></tr>
-<tr><td class="rank">—</td><td>To be announced</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td></tr>
-<tr><td class="rank">—</td><td>To be announced</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td></tr>
-<tr><td class="rank">—</td><td>To be announced</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td></tr>
-</tbody>
-</table>
-</div>
+        <div class="tour-meta">SOLO BUILDS &nbsp; • &nbsp; CASH PRIZE &nbsp; • &nbsp; EU</div>
 
-<div class="leaderboard-foot">Official standings will be added after the tournament. This table is currently a design preview; no player results or points have been entered.</div>
-</div>
+        <p>Our first official VXR tournament. Solo Builds, cash prizes and a chance to prove yourself. The event will be commentated live by VXR SMOXY and VXR ZEROX.</p>
+
+        <p class="sub">More details, rules and registration will be announced soon.</p>
+
+        <a class="btn" href="https://discord.gg/9pXXYwpWm" target="_blank" rel="noopener">STAY TUNED ON DISCORD →</a>
+      </div>
+
+      <div class="tour-info">
+        <div class="tour-row">
+          <span class="ico">♧</span>
+          <div><b>MODE</b><span>Solo Builds</span></div>
+        </div>
+
+        <div class="tour-row">
+          <span class="ico">◉</span>
+          <div><b>COMMENTATORS</b><span>SMOXY + ZEROX</span></div>
+        </div>
+
+        <div class="tour-row">
+          <span class="ico">♜</span>
+          <div><b>PRIZE POOL</b><span>To be announced</span></div>
+        </div>
+
+        <div class="tour-row">
+          <span class="ico">◷</span>
+          <div><b>DATE & REGISTRATION</b><span>Coming soon</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="note">Tournament date, eligibility, rules, prize details and registration will be published before the event opens.</p>
+
+  <div class="leaderboard-wrap">
+    <div class="leaderboard-top">
+      <h3>VXR SOLO CASH CUP // LEADERBOARD</h3>
+      <span class="demo-label">PREVIEW • NOT LIVE RESULTS</span>
+    </div>
+
+    <div class="table-scroll">
+      <table class="leaderboard" aria-label="Ukázková turnajová tabulka">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>PLAYER</th>
+            <th>ELIMS</th>
+            <th>PLACEMENT</th>
+            <th>POINTS</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr><td class="rank">—</td><td>To be announced</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td></tr>
+          <tr><td class="rank">—</td><td>To be announced</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td></tr>
+          <tr><td class="rank">—</td><td>To be announced</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td></tr>
+          <tr><td class="rank">—</td><td>To be announced</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td></tr>
+          <tr><td class="rank">—</td><td>To be announced</td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="leaderboard-foot">
+      Official standings will be added after the tournament. This table is currently a design preview; no player results or points have been entered.
+    </div>
+  </div>
 </section>
+
+<!-- CLAN -->
 
 <section class="wrap section" id="clan">
-<div class="panel clan">
-<div class="clan-logo">♛ VXR<br><span class="accent">CLAN</span><div class="role">BECOME PART OF THE TEAM</div></div>
+  <div class="panel clan">
 
-<div>
-<h3>WANT TO JOIN THE <span class="accent">VXR CLAN?</span></h3>
-<p class="sub">Want to be part of the VXR clan? Contact SMOXY or ZEROX. We’ll train with you, help you improve and give you a chance to grow as a player.</p>
-<div class="playerlinks">
-<a href="mailto:tomaseksus5@gmail.com">✉ Contact SMOXY — tomaseksus5@gmail.com</a>
-<a href="mailto:Kristof.tomas19@gmail.com">✉ Contact ZEROX — Kristof.tomas19@gmail.com</a>
-<a href="https://discord.gg/9pXXYwpWm" target="_blank" rel="noopener">◉ Join the Discord server</a>
-</div>
-</div>
+    <div class="clan-logo">
+      ♛ VXR<br>
+      <span class="accent">CLAN</span>
+      <div class="role">BECOME PART OF THE TEAM</div>
+    </div>
 
-<div class="requirements">
-<h3>CLAN EXPECTATIONS</h3>
-<div>Good mentality</div>
-<div>Willing to improve</div>
-<div>Active on Discord</div>
-<div>Use <b>VXR</b> before your Fortnite name after joining</div>
-</div>
-</div>
+    <div>
+      <h3>WANT TO JOIN THE <span class="accent">VXR CLAN?</span></h3>
+
+      <p class="sub">Want to be part of the VXR clan? Contact SMOXY or ZEROX. We’ll train with you, help you improve and give you a chance to grow as a player.</p>
+
+      <div class="playerlinks">
+        <a href="mailto:tomaseksus5@gmail.com">✉ Contact SMOXY — tomaseksus5@gmail.com</a>
+        <a href="mailto:Kristof.tomas19@gmail.com">✉ Contact ZEROX — Kristof.tomas19@gmail.com</a>
+        <a href="https://discord.gg/9pXXYwpWm" target="_blank" rel="noopener">◉ Join the Discord server</a>
+      </div>
+    </div>
+
+    <div class="requirements">
+      <h3>CLAN EXPECTATIONS</h3>
+      <div>Good mentality</div>
+      <div>Willing to improve</div>
+      <div>Active on Discord</div>
+      <div>Use <b>VXR</b> before your Fortnite name after joining</div>
+    </div>
+
+  </div>
 </section>
+
+<!-- CONTACT -->
 
 <section class="wrap section" id="contact">
-<div class="section-head">
-<div>
-<div class="section-index">04 // CONTACT</div>
-<h2>FIND <span class="accent">ME</span></h2>
-<p class="sub">Follow, join, and be part of the journey.</p>
-</div>
-</div>
+  <div class="section-head">
+    <div>
+      <div class="section-index">04 // CONTACT</div>
+      <h2>FIND <span class="accent">ME</span></h2>
+      <p class="sub">Follow, join, and be part of the journey.</p>
+    </div>
+  </div>
 
-<div class="contact-grid">
-<div class="contact-card"><div class="c-icon">◎</div><b>INSTAGRAM</b><a href="https://www.instagram.com/susage.eo/" target="_blank" rel="noopener">@susage.eo</a><br><span>Reels • Updates • Moments</span></div>
-<div class="contact-card"><div class="c-icon">◉</div><b>DISCORD</b><a href="https://discord.gg/9pXXYwpWm" target="_blank" rel="noopener">VXR SMOXY</a><br><span>Join the community</span></div>
-<div class="contact-card"><div class="c-icon">✉</div><b>EMAIL — SMOXY</b><a href="mailto:tomaseksus5@gmail.com">tomaseksus5@gmail.com</a><br><span>Business & collabs</span></div>
-<div class="contact-card"><div class="c-icon">✉</div><b>EMAIL — ZEROX</b><a href="mailto:Kristof.tomas19@gmail.com">Kristof.tomas19@gmail.com</a><br><span>Duo & clan contact</span></div>
-</div>
+  <div class="contact-grid">
+
+    <div class="contact-card">
+      <div class="c-icon">◎</div>
+      <b>INSTAGRAM</b>
+      <a href="https://www.instagram.com/susage.eo/" target="_blank" rel="noopener">@susage.eo</a><br>
+      <span>Reels • Updates • Moments</span>
+    </div>
+
+    <div class="contact-card">
+      <div class="c-icon">◉</div>
+      <b>DISCORD</b>
+      <a href="https://discord.gg/9pXXYwpWm" target="_blank" rel="noopener">VXR SMOXY</a><br>
+      <span>Join the community</span>
+    </div>
+
+    <div class="contact-card">
+      <div class="c-icon">✉</div>
+      <b>EMAIL — SMOXY</b>
+      <a href="mailto:tomaseksus5@gmail.com">tomaseksus5@gmail.com</a><br>
+      <span>Business & collabs</span>
+    </div>
+
+    <div class="contact-card">
+      <div class="c-icon">✉</div>
+      <b>EMAIL — ZEROX</b>
+      <a href="mailto:Kristof.tomas19@gmail.com">Kristof.tomas19@gmail.com</a><br>
+      <span>Duo & clan contact</span>
+    </div>
+
+  </div>
 </section>
+
 </main>
 
 <footer>
-<div class="wrap foot">
-<strong><span class="accent">VXR</span> SMOXY</strong>
-<span class="eyebrow">NO LIMITS. JUST PLAY.</span>
-<span>© 2026 VXR SMOXY. All rights reserved.</span>
-</div>
+  <div class="wrap foot">
+    <strong><span class="accent">VXR</span> SMOXY</strong>
+    <span class="eyebrow">NO LIMITS. JUST PLAY.</span>
+    <span>© 2026 VXR SMOXY. All rights reserved.</span>
+  </div>
 </footer>
 
 <script>
@@ -569,6 +1524,9 @@ Placement: <b>#5,096</b> &nbsp; • &nbsp; PR: <b>4.9</b>
   }
 
   if (!('IntersectionObserver' in window)) {
+    sections.forEach((section) => {
+      section.classList.add('vxr-visible');
+    });
     return;
   }
 
@@ -590,5 +1548,6 @@ Placement: <b>#5,096</b> &nbsp; • &nbsp; PR: <b>4.9</b>
   });
 })();
 </script>
+
 </body>
 </html>

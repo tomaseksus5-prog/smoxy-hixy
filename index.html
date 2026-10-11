@@ -1164,6 +1164,205 @@ main > section.vxr-reveal.vxr-visible {
     display: none;
   }
 }
+
+
+/* ===== VXR ULTRA DESIGN UPGRADE ===== */
+:root {
+  --ultra-glow: 0 0 22px #a855f766, 0 0 55px #7c3aed24;
+}
+body {
+  background-size: auto, auto, auto;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .42;
+  background:
+    radial-gradient(circle at 18% 24%, #9b5cff1c 0 2px, transparent 3px),
+    radial-gradient(circle at 72% 66%, #e879f91b 0 2px, transparent 3px),
+    radial-gradient(circle at 44% 82%, #8b5cf61c 0 1px, transparent 2px);
+  background-size: 170px 170px, 230px 230px, 120px 120px;
+  animation: vxr-particle-drift 28s linear infinite;
+}
+body > * {
+  position: relative;
+  z-index: 1;
+}
+.topbar {
+  position: sticky;
+  z-index: 20;
+}
+@keyframes vxr-particle-drift {
+  from { transform: translate3d(0,0,0) rotate(0deg); }
+  to { transform: translate3d(3%, -2%, 0) rotate(4deg); }
+}
+.topbar {
+  transition: background .3s ease, border-color .3s ease;
+}
+.topbar:hover {
+  border-bottom-color: #a855f777;
+}
+.hero-art {
+  isolation: isolate;
+}
+.hero-art::before {
+  animation: vxr-orbit 18s linear infinite;
+}
+.hero-art::after {
+  animation: vxr-orbit 13s linear infinite reverse;
+}
+@keyframes vxr-orbit {
+  to { rotate: 360deg; }
+}
+.sigil {
+  animation: vxr-sigil-float 4.5s ease-in-out infinite;
+}
+@keyframes vxr-sigil-float {
+  0%,100% { transform: translateY(0) skew(-8deg); }
+  50% { transform: translateY(-6px) skew(-8deg); }
+}
+.panel, .tournament, .contact-card, .stat, .player {
+  will-change: transform;
+}
+.panel:hover {
+  border-color: #9665c2;
+  box-shadow: 0 18px 45px #0006, 0 0 24px #a855f714;
+}
+.stat:hover {
+  transform: translateY(-5px) scale(1.025);
+  box-shadow: 0 10px 25px #0005, 0 0 23px #a855f733;
+}
+.btn {
+  border-color: #bd8af5;
+  box-shadow: 0 5px 20px #7c3aed22, inset 0 0 0 1px #ffffff08;
+}
+.btn:hover {
+  box-shadow: 0 8px 28px #a855f766, 0 0 38px #9500ff25;
+}
+.navlinks a, .playerlinks a, .contact-card a {
+  transition: color .2s ease, text-shadow .2s ease;
+}
+.navlinks a:hover, .playerlinks a:hover, .contact-card a:hover {
+  text-shadow: 0 0 14px #c084fc77;
+}
+.section-index {
+  text-shadow: 0 0 14px #a855f733;
+}
+.vxr-secret-trigger {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 3;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #c084fc30;
+  border-radius: 50%;
+  color: #c084fc55;
+  background: #0b0712a8;
+  font-size: 13px;
+  cursor: pointer;
+  transition: opacity .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  opacity: .28;
+}
+.vxr-secret-trigger:hover, .vxr-secret-trigger:focus-visible {
+  opacity: 1;
+  color: #f3e8ff;
+  border-color: #d8b4fe;
+  box-shadow: 0 0 18px #a855f766;
+  transform: rotate(45deg) scale(1.08);
+  outline: none;
+}
+.vxr-hint {
+  color: #8e7ba4;
+  font-size: 11px;
+  letter-spacing: .7px;
+  opacity: .7;
+}
+.vxr-secret-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #05030bd9;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.vxr-secret-modal.is-open {
+  display: flex;
+  animation: vxr-modal-fade .25s ease both;
+}
+@keyframes vxr-modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.vxr-secret-card {
+  position: relative;
+  width: min(560px, 100%);
+  padding: clamp(24px, 5vw, 42px);
+  text-align: center;
+  border: 1px solid #b66aff;
+  border-radius: 12px;
+  background:
+    radial-gradient(ellipse at 50% 0%, #7c3aed35, transparent 58%),
+    linear-gradient(145deg, #171020, #08060e 78%);
+  box-shadow: 0 0 35px #a855f744, 0 0 110px #7c3aed22, inset 0 0 45px #a855f70b;
+  animation: vxr-card-enter .4s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes vxr-card-enter {
+  from { transform: translateY(16px) scale(.97); }
+  to { transform: translateY(0) scale(1); }
+}
+.vxr-secret-kicker {
+  color: #d8b4fe;
+  font: 700 10px Orbitron, sans-serif;
+  letter-spacing: 3px;
+}
+.vxr-secret-card h2 {
+  margin: 14px 0;
+  color: #f3e8ff;
+  font: 900 clamp(24px, 5vw, 38px)/1.15 Orbitron, sans-serif;
+  text-shadow: 0 0 22px #a855f766;
+}
+.vxr-secret-trophy {
+  margin: 18px 0;
+  font-size: 48px;
+  filter: drop-shadow(0 0 16px #c084fc99);
+}
+.vxr-secret-card p {
+  color: #d7c9e8;
+  line-height: 1.55;
+}
+.vxr-secret-card .vxr-secret-important {
+  color: #e9d5ff;
+  font-weight: 700;
+}
+.vxr-secret-card .btn {
+  margin-top: 8px;
+}
+.vxr-secret-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  color: #d8b4fe;
+  font-size: 26px;
+  cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  body::after, .hero-art::before, .hero-art::after, .sigil { animation: none !important; }
+  .vxr-secret-modal.is-open, .vxr-secret-card { animation: none !important; }
+}
+
 </style>
 </head>
 
@@ -1214,6 +1413,7 @@ main > section.vxr-reveal.vxr-visible {
 
   <div class="hero-art">
     <div class="sigil">VXR<small>COMPETE • IMPROVE • WIN</small></div>
+    <button class="vxr-secret-trigger" id="vxrSecretTrigger" type="button" aria-label="Hidden VXR signal" title="A strange signal...">✦</button>
   </div>
 </section>
 
@@ -1500,11 +1700,27 @@ main > section.vxr-reveal.vxr-visible {
 
 </main>
 
+
+<!-- VXR SECRET EGG -->
+<div class="vxr-secret-modal" id="vxrSecretModal" role="dialog" aria-modal="true" aria-labelledby="vxrSecretTitle" aria-hidden="true">
+  <div class="vxr-secret-card">
+    <button class="vxr-secret-close" id="vxrSecretClose" type="button" aria-label="Close secret screen">×</button>
+    <div class="vxr-secret-kicker">VXR // CLASSIFIED SIGNAL</div>
+    <div class="vxr-secret-trophy" aria-hidden="true">♛</div>
+    <h2 id="vxrSecretTitle">YOU FOUND THE VXR SECRET</h2>
+    <p class="vxr-secret-important">CONGRATULATIONS, HUNTER!</p>
+    <p>You are automatically qualified for the <b>VXR Tournament FINAL</b> as the secret-hunt prize.</p>
+    <p>The first person to discover this screen and send a clear screenshot to <b>@susage.eo</b> on Instagram wins the spot.</p>
+    <p class="vxr-hint">The organizer confirms the first valid DM received. Keep your screenshot as proof.</p>
+    <a class="btn" href="https://www.instagram.com/susage.eo/" target="_blank" rel="noopener">SEND SCREENSHOT ON INSTAGRAM ↗</a>
+  </div>
+</div>
+
 <footer>
   <div class="wrap foot">
     <strong><span class="accent">VXR</span> SMOXY</strong>
     <span class="eyebrow">NO LIMITS. JUST PLAY.</span>
-    <span>© 2026 VXR SMOXY. All rights reserved.</span>
+    <span>© 2026 VXR SMOXY. All rights reserved.<br><span class="vxr-hint">Some signals reveal themselves after three touches.</span></span>
   </div>
 </footer>
 
@@ -1518,33 +1734,76 @@ main > section.vxr-reveal.vxr-visible {
   }
 
   const sections = document.querySelectorAll('main > section');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    return;
-  }
-
-  if (!('IntersectionObserver' in window)) {
-    sections.forEach((section) => {
-      section.classList.add('vxr-visible');
+  // Scroll reveal is optional; the Secret Egg works regardless of motion settings.
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    sections.forEach((section) => section.classList.add('vxr-visible'));
+  } else {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('vxr-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -35px 0px'
     });
-    return;
+
+    sections.forEach((section) => {
+      section.classList.add('vxr-reveal');
+      observer.observe(section);
+    });
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('vxr-visible');
-        observer.unobserve(entry.target);
+  // VXR Secret Egg: click the small star three times.
+  const secretTrigger = document.getElementById('vxrSecretTrigger');
+  const secretModal = document.getElementById('vxrSecretModal');
+  const secretClose = document.getElementById('vxrSecretClose');
+  let secretClicks = 0;
+  let secretLastClick = 0;
+
+  const openSecret = () => {
+    if (!secretModal) return;
+    secretModal.classList.add('is-open');
+    secretModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (secretClose) secretClose.focus();
+  };
+
+  const closeSecret = () => {
+    if (!secretModal) return;
+    secretModal.classList.remove('is-open');
+    secretModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (secretTrigger) secretTrigger.focus();
+  };
+
+  if (secretTrigger) {
+    secretTrigger.addEventListener('click', () => {
+      const now = Date.now();
+      if (now - secretLastClick > 1800) secretClicks = 0;
+      secretLastClick = now;
+      secretClicks += 1;
+      if (secretClicks >= 3) {
+        secretClicks = 0;
+        openSecret();
       }
     });
-  }, {
-    threshold: 0.08,
-    rootMargin: '0px 0px -35px 0px'
-  });
+  }
 
-  sections.forEach((section) => {
-    section.classList.add('vxr-reveal');
-    observer.observe(section);
+  if (secretClose) secretClose.addEventListener('click', closeSecret);
+  if (secretModal) {
+    secretModal.addEventListener('click', (event) => {
+      if (event.target === secretModal) closeSecret();
+    });
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && secretModal && secretModal.classList.contains('is-open')) {
+      closeSecret();
+    }
   });
 })();
 </script>
